@@ -15,64 +15,97 @@ eleventyNavigation:
 {% extends 'layouts/base.html' %}
 
 {% block body %}
+
+<!-- Usage Notes:
+We made this stitch to overlap the section below it, so if there's a patterned texture or image background on the next section below, it will overlap on top of it. Other Stitches like this would have a white gap between the cards and the next section. In order to make Stitches like this work, we need to add a padding top on the section below it to counteract the overlap. Here's the padding top you need to add to the section below this one and all the breakpoints to add them so this design will work with whatever comes after it:
+
+ON MOBILE (360px): add padding-top: (750/16rem); using LESS, or padding-top: calc(750 / 16 * 1rem); if you're using SCSS, or padding-top: 46.875rem; if you're just using vanilla CSS.
+
+ON TABLET (768px): Reset to padding-top: (500/16rem); using LESS, padding-top: calc(500 / 16 * 1rem) for SCSS or padding-top: 31.25rem; for CSS.
+
+ON DESKTOP (1024px): Reset to padding-top: (250/16rem); using LESS, padding-top: calc(250 / 16 * 1rem) for SCSS or padding-top: 15.625rem; for CSS.
+
+Doing this will complete the overlapping "breaking the container" look.
+-->
+
     <!-- ============================================ -->
     <!--                    Hero                      -->
     <!-- ============================================ -->
 
-    <section id="hero-1621">
+    <section id="hero-1299">
         <div class="cs-container">
             <div class="cs-content">
-                <span class="cs-topper">For any small business need</span>
-                <h1 class="cs-title">
-                    The CodeStitch Advanced Starter Kit - Main Branch
-                </h1>
-                <a href="" class="cs-button-solid">Call to Action</a>
-                <!--Bottom Corners-->
-                <div class="cs-corners" aria-hidden="true"></div>
+                <span class="cs-topper">Welcome to Invetex</span>
+                <h1 class="cs-title">Expert Accountants and Tax Advisors for Your Business</h1>
+                <p class="cs-text">
+                    Highly qualified tax consultants with many years of experience in the field offer a full range of services to help you build a financial future.
+                </p>
+                <a href="" class="cs-button-solid">Free Consultation</a>
             </div>
+            <!--To make your own background crops of people use https://www.remove.bg/-->
+            <div class="cs-picture-wrapper">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/accountant15.png">
+                    <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/accountant15.png">
+                    <img aria-hidden="true" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/accountant15.png" alt="accountant" width="468" height="658">
+                </picture>
+            </div>
+        </div>
+        <div class="cs-container">
             <ul class="cs-card-group">
                 <li class="cs-item">
-                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/adv-kit-styles.svg" alt="icon" width="48" height="48">
-                    <h2 class="cs-h3">LESS/SASS</h2>
-                    <p class="cs-item-text">
-                        Both preprocessors, alongside vanilla CSS, all available under one kit
-                    </p>
+                    <a href="" class="cs-link">
+                        <img class="cs-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/brain.svg" loading="lazy" decoding="async" alt="icon" width="40" height="40" aria-hidden="true">
+                        <h3 class="cs-h3">Creative Solutions</h3>
+                        <p class="cs-item-text">
+                            We will go ahead that extra mile to ensure our clients welfare, our working hours convenient to our Client's from contact.
+                        </p>
+                    </a>
                 </li>
                 <li class="cs-item">
-                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/adv-kit-optimize.svg" alt="icon" width="48" height="48">
-                    <h2 class="cs-h3">Optimization</h2>
-                    <p class="cs-item-text">
-                        Get better Pagespeed scores, quicker, with automatic critical CSS inlining, minifiction and asset optimization
-                    </p>
+                    <a href="" class="cs-link">
+                        <img class="cs-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/users.svg" loading="lazy" decoding="async" alt="icon" width="40" height="40" aria-hidden="true">
+                        <h3 class="cs-h3">Professional Team</h3>
+                        <p class="cs-item-text">
+                            We will go ahead that extra mile to ensure our clients welfare, our working hours convenient to our Client's from contact.
+                        </p>
+                    </a>
                 </li>
                 <li class="cs-item">
-                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/adv-kit-cart.svg" alt="icon" width="48" height="48">
-                    <h2 class="cs-h3">eCommerce</h2>
-                    <p class="cs-item-text">
-                        Create the fastest of eCommerce stores with a seamless Shopify integration
-                    </p>
+                    <a href="" class="cs-link">
+                        <img class="cs-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg" loading="lazy" decoding="async" alt="icon" width="40" height="40" aria-hidden="true">
+                        <h3 class="cs-h3">Diverse Approach</h3>
+                        <p class="cs-item-text">
+                            We will go ahead that extra mile to ensure our clients welfare, our working hours convenient to our Client's from contact.
+                        </p>
+                    </a>
                 </li>
                 <li class="cs-item">
-                    <img class="cs-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/adv-kit-cms.svg" alt="icon" width="48" height="48">
-                    <h2 class="cs-h3">CMS</h2>
-                    <p class="cs-item-text">
-                        Free time and empower your clients with a Decap content management system
-                    </p>
+                    <a href="" class="cs-link">
+                        <img class="cs-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/Layer.svg" loading="lazy" decoding="async" alt="icon" width="40" height="40" aria-hidden="true">
+                        <h3 class="cs-h3">Diverse Approach</h3>
+                        <p class="cs-item-text">
+                            We will go ahead that extra mile to ensure our clients welfare, our working hours convenient to our Client's from contact.
+                        </p>
+                    </a>
                 </li>
             </ul>
         </div>
-
-        <!-- Background Image -->
+        <!--Floating Arrow-->
+        <!--We wrap it in a picture element wrapper so we can use the wrapper as a box for it to live inside of instead of the section wrapper. This allows us to add overflow:hidden to the wrapper to cut off the graphic at the edge of the screen. If we added overflow:hidden to the section container it would clip the overlapping service cards. So we add this wrapper to allow us to clip only the graphic. -->
+        <picture class="cs-floater-wrapper">
+            <img class="cs-floater" aria-hidden="true" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/yellow-arrow-reversed.svg" alt="graphic" width="956" height="708">
+        </picture>
+        <!--Background Image, background image added in CSS at 1600px wide for parallax effect-->
         <picture class="cs-background">
-            <source media="(max-width: 600px)"
-            srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting-2-m.jpeg">
-            <source media="(min-width: 601px)"
-            srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting-2.jpeg">
-            <img loading="lazy" decoding="async"
-            src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/meeting-2.jpeg" alt="meeting" width="1920"
-            height="1200" aria-hidden="true">
+            <!--Mobile Image-->
+            <source media="(max-width: 1023px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg">
+            <!--Tablet and above Image-->
+            <source media="(min-width: 1024px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg">
+            <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg" alt="buildings" width="1280" height="568">
         </picture>
     </section>
+                                
 
     <!-- ============================================ -->
     <!--                 Side By Side                 -->
