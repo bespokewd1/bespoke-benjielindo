@@ -49,6 +49,12 @@
         {# https://web.dev/articles/preload-responsive-images #}
         {% block head %}{% endblock %}
 
+        <link rel="icon" type="image/png" href="{{ client.domain }}/assets/favicons/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="{{ client.domain }}/assets/favicons/favicon.svg" />
+        <link rel="shortcut icon" href="{{ client.domain }}/assets/favicons/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ client.domain }}/assets/favicons/apple-touch-icon.png" />
+        <link rel="manifest" href="{{ client.domain }}/assets/favicons/site.webmanifest" />
+
         <!-- Uses the title directly from the frontmatter of the page -->
         <title>{{ title }}</title>
     </head>

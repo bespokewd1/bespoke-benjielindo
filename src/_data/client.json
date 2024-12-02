@@ -1,5 +1,5 @@
 {
-    "name": "Code Stitch Web Designs",
+    "name": "Benjie Lindo",
     "email": "help@codestitch.app",
     "phoneForTel": "555-123-4567",
     "phoneFormatted": "(555) 123-4567",
@@ -12,10 +12,11 @@
         "mapLink": "https://goo.gl/maps/UAQn4vuGDiwv7DV39"
     },
     "social": {
-        "facebook": "https://www.facebook.com/",
+        "facebook": "https://www.facebook.com/profile.php?id=61550341267983",
         "twitter": "https://twitter.com/",
         "instagram": "https://www.instagram.com/",
-        "youtube": "https://www.youtube.com/"
+        "youtube": "https://www.youtube.com/",
+        "domain": "https://bespoke-benjielindo.netlify.app"
     },
     "domain": "https://www.codestitch.app"
 }
