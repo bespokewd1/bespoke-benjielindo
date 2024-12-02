@@ -6,10 +6,10 @@
     // This kit has also removed all instances of .cs-button outside of the root sheet, meaning you can change for any of the content flair buttons in one place.
     :root {
         /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-        --primary: #ffba19;
-        --primaryLight: #ffd675;
-        --secondary: #001f3f;
-        --secondaryLight: #001f3f;
+        --primary: #0067FF;
+        --primaryLight: #0067FF;
+        --secondary: #FF0000;
+        --secondaryLight: #FF0000;
         --headerColor: #1a1a1a;
         --bodyTextColor: #4e4b66;
         --bodyTextColorWhite: #fafbfc;
@@ -243,6 +243,7 @@
                 height: 100%;
                 /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
                 object-fit: contain;
+                object-position: left;
             }
         }
 
@@ -989,7 +990,7 @@
         .cs-logo {
             width: 18.4%;
             max-width: (197/16rem);
-            height: (60/16rem);
+            height: 5.75rem;
             /* margin-right auto pushes everything away from it to the right */
             margin: 0 auto 0 0;
             padding: 0;
@@ -1003,6 +1004,7 @@
                 height: 100%;
                 /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
                 object-fit: contain;
+                object-position: left;
             }
         }
 
