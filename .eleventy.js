@@ -2,6 +2,9 @@
 const pluginDirectoryOutput = require("@11ty/eleventy-plugin-directory-output");
 const pluginEleventyNavigation = require("@11ty/eleventy-navigation");
 
+// Other
+const filterFormatDate = require("./src/config/filter/formatDate");
+
 module.exports = function (eleventyConfig) {
     /**
      *  PLUGINS
@@ -28,6 +31,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/assets/images");
     eleventyConfig.addPassthroughCopy("./src/assets/js");
     eleventyConfig.addPassthroughCopy("./src/assets/svgs");
+
+    eleventyConfig.addFilter("formatDate", filterFormatDate);
 
     return {
         dir: {
