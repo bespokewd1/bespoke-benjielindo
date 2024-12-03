@@ -1,0 +1,112 @@
+---
+title: "Services | Benjie Lindo Live"
+description: "The main branch of the advanced starter kit. Contains a basic 11ty setup for clients not needing much
+additional functionality. Similar to our Intermediate Kits."
+permalink: 'services/'
+eleventyNavigation:
+    key: 'Services'
+    order: '300'
+---
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/about.css">
+{% endblock %}
+
+{% extends 'layouts/base.html' %}
+
+{% block body %}
+
+<!-- ============================================ -->
+<!--                   Banner                     -->
+<!-- ============================================ -->
+
+<div id="banner-1014">
+    <div class="cs-container">
+        <picture class="cs-picture">
+            <img class="cs-icon" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Ffancy-divider.svg" alt="divider" width="181" height="36" aria-hidden="true">
+        </picture>
+        <span class="cs-int-title">About Stitch Restaurant</span>
+        <p class="cs-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+    </div>
+    <!--Background Image-->
+    <picture class="cs-background">
+        <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FMISC%2Ftable.jpg">
+        <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FMISC%2Ftable.jpg">
+        <img decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FMISC%2Ftable.jpg" alt="breakfast" width="1920" height="1000">
+    </picture>
+</div>   
+
+<!-- ============================================ -->
+<!--                 Side By Side                 -->
+<!-- ============================================ -->
+
+<section id="sbs-1014">
+    <div class="cs-container">
+        <!-- Left Image Section -->
+        <div class="cs-image-group">
+            <picture class="cs-picture cs-picture1">
+                <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast1.jpg">
+                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast1.jpg">
+                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast1.jpg" alt="breakfast" width="522" height="581" aria-hidden="true">
+            </picture>
+            <picture class="cs-picture cs-picture2">
+                <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast2.jpg">
+                <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast2.jpg">
+                <img loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast2.jpg" alt="breakfast" width="414" height="400" aria-hidden="true">
+            </picture>
+        </div>
+        <!-- Right Content Section-->
+        <div class="cs-content">
+            <span class="cs-topper">About Us</span>
+            <h2 class="cs-title">About Stitch Food</h2>
+            <p class="cs-text">
+                In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
+            </p>
+            <p class="cs-text">
+                In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.
+            </p>
+            <div class="cs-quote">
+                <span class="cs-quote-text">
+                    In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.
+                </span>
+                <span class="cs-name">Justin Time</span>
+                <span class="cs-job">CEO-Founder</span>
+                <img class="cs-quote-icon" loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg" alt="gavel" width="136" height="77">
+            </div>
+        </div>
+    </div>
+</section>
+          
+<!-- ============================================ -->
+<!--                    CTA                       -->
+<!-- ============================================ -->
+
+<section id="cta-1014">
+    <div class="cs-container">
+        <div class="cs-left-section">
+            <h2 class="cs-title">Come See Us For Breakfast!</h2>
+            <a href="" class="cs-button-solid">Request Appointment</a>
+        </div>
+        <div class="cs-content">
+            <span class="cs-header">Available Hours</span>
+            <p class="cs-p"> 
+                Tuesday, Thursday, Friday: 9am-6pm<br>
+                ​(closed for lunch 12pm-2pm)
+            </p>
+            <p class="cs-p">
+                Appointments Preferred, Walk-Ins Welcome.<br>
+                Saturdays by Appointment Only.
+            </p>
+        </div>
+        <picture class="cs-background">
+            <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast3.jpg">
+            <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast3.jpg">
+            <img aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast3.jpg" alt="breakfast" width="275" height="132">
+        </picture>
+    </div>
+</section>
+                                
+
+{% endblock %}
