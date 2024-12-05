@@ -1083,7 +1083,7 @@
         margin: 0;
         position: relative;
         display: block;
-        background-color: #dfdfdf;
+        background-color: #0067FF70;
         padding: 1rem;
     }
     #gallery-45 .cs-item:hover .cs-hover-box {
@@ -1153,6 +1153,9 @@
     #gallery-45 .cs-button-solid:hover:before {
         width: 100%;
     }
+    #gallery-45 .cs-item {
+        grid-column: span 6;
+    }
 }
 /* In Between - 600px */
 @media only screen and (min-width: 37.5rem) {
@@ -1161,14 +1164,11 @@
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: 1fr;
     }
-    #gallery-45 .cs-item {
-        grid-column: span 6;
-    }
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
     #gallery-45 .cs-item {
-        grid-column: span 3;
+        grid-column: span 2;
     }
 }
 /* Dark Mode */
