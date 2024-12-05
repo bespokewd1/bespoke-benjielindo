@@ -456,7 +456,7 @@ html {
             height: 100vh;
             opacity: 0;
             background-color: #fff;
-            box-shadow: inset rgba(0, 0, 0, 0.4) 0px 8px 24px;
+            box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
             overflow: hidden;
             position: absolute;
             top: 100%;
@@ -562,8 +562,14 @@ html {
         }
     }
 }
+/* Global */
+@media only screen and (min-width: 0rem) {
+        #cs-navigation {
+            box-shadow:rgba(149, 157, 165, 0.4) 0px 8px 24px
 
-/* Dark Mode */
+        }
+}
+/* Global Dark Mode */
 @media only screen and (min-width: 0rem) {
     body.dark-mode {
         #cs-navigation {
