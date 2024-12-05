@@ -1060,3 +1060,178 @@ html {
         }
     }
 }
+
+
+/*-- -------------------------- -->
+<---            CTA             -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #cta-1014 {
+        padding: var(--sectionPadding);
+
+        .cs-container {
+            width: 100%;
+            max-width: (1280/16rem);
+            margin: auto;
+            /* 32px - 88px top & bottom */
+            /* 24px - 88px left & right */
+            padding: clamp(2em, 6.3vw, 5.5em) clamp(1.5em, 5.7vw, 5.5em);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: (32/16rem);
+            position: relative;
+            /* clips the corners for the border radius to show */
+            overflow: hidden;
+            z-index: 1;
+            /* prevents padding from adding to height and width */
+            box-sizing: border-box;
+        }
+
+        .cs-background {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: -1;
+
+            &:before {
+                /* black overlay */
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: #000;
+                opacity: 0.8;
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+
+        .cs-title {
+            /* 25px - 49px */
+            font-size: clamp(1.5625rem, 3.9vw, 3.0625rem);
+            font-weight: 900;
+            line-height: 1.2em;
+            text-align: left;
+            max-width: (800/16rem);
+            /* 20px - 48px */
+            margin: 0 auto clamp(1.25rem, 4.7vw, 3rem);
+            color: var(--bodyTextColorWhite);
+            position: relative;
+        }
+
+        .cs-button-solid {
+            font-size: (16/16rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: auto;
+            color: #fff;
+            min-width: (150/16rem);
+            padding: 0 (32/16rem);
+            background-color: var(--primary);
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            /* 12px - 20px */
+            gap: clamp(0.75rem, 1.6vw, 1.25rem);
+        }
+
+        .cs-header {
+            /* 20px - 25px */
+            font-size: clamp(1.25rem, 2.4vw, 1.5625rem);
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+
+        .cs-p {
+            /* 14px - 20px */
+            font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+            line-height: 1.5em;
+            margin: 0;
+            color: var(--bodyTextColorWhite);
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #cta-1014 {
+        .cs-container {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .cs-content {
+            align-items: flex-end;
+            text-align: right;
+            /* prevents flexbox from squishing it */
+            flex: none;
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        #cta-1014 {
+            .cs-background {
+                &:before {
+                    opacity: 0.9;
+                }
+                &:after {
+                    opacity: 0.1;
+                }
+            }
+        }
+    }
+}
