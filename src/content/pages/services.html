@@ -97,36 +97,44 @@ eleventyNavigation:
         </ul>
     </div>
 </section>
-                                
-          
+                       
 <!-- ============================================ -->
-<!--                    CTA                       -->
+<!--                Other Services                -->
 <!-- ============================================ -->
 
-<section id="cta-1014">
+<section id="sbsr-1309" class="cs-section-breaker">
     <div class="cs-container">
-        <div class="cs-left-section">
-            <h2 class="cs-title">Come See Us For Breakfast!</h2>
-            <a href="" class="cs-button-solid">Request Appointment</a>
+        <!-- Left Image Section -->
+        <div class="cs-image-group">
+            <!--Floating Box-->
+            <div class="cs-box">
+                <span class="cs-desc">Grow Your Online Presence</span>
+            </div>
+            <!--Image-->
+            <picture class="cs-picture">
+                <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/benjie-kitchen.webp">
+                <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/benjie-kitchen.webp"">
+                <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/benjie-kitchen.webp"" alt="meeting" width="630" height="630" aria-hidden="true">
+            </picture>
         </div>
+        <!-- Right Content Section-->
         <div class="cs-content">
-            <span class="cs-header">Available Hours</span>
-            <p class="cs-p"> 
-                Tuesday, Thursday, Friday: 9am-6pm<br>
-                ​(closed for lunch 12pm-2pm)
-            </p>
-            <p class="cs-p">
-                Appointments Preferred, Walk-Ins Welcome.<br>
-                Saturdays by Appointment Only.
-            </p>
+            <span class="cs-topper">How Can We Help</span>
+            <h2 class="cs-title">Other Services</h2>
+            <p class="cs-text"><strong>Sasakyang Hanap Mo / Cash Back</strong> - Toyota, Subaru, Honda, Hyundai, Jeep, Ford</p>
+            <p class="cs-text"><strong>Home / Car / Business Insurance</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <p class="cs-text"><strong>Fly Now Pay Later</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <p class="cs-text"><strong>Family / Business Lawyer</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <p class="cs-text"><strong>Car Mechanic</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <p class="cs-text"><strong>Event Catering Services</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <p class="cs-text"><strong>DJ, Videographer / Photographer</strong> - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <a class="cs-button-solid" aria-label="learn more about our programs" href="tel:1-780-885-2698">Need With These Services? Call Now!</a>
+            
         </div>
-        <picture class="cs-background">
-            <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast3.jpg">
-            <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast3.jpg">
-            <img aria-hidden="true" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Food-Menu/breakfast3.jpg" alt="breakfast" width="275" height="132">
-        </picture>
     </div>
 </section>
+          
+{% include "components/cta.html" %}
                                 
 
 {% endblock %}
