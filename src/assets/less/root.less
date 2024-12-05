@@ -283,6 +283,10 @@ html {
                 /* places the image to the left edge of the parent */
                 object-position: left;
             }
+
+            img:focus-visible {
+                outline:none !important;
+            }
         }
 
         .cs-toggle {
@@ -547,6 +551,10 @@ html {
                 height: 100%;
                 /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
                 object-fit: contain;
+            }
+
+            img:focus-visible {
+                outline:none !important;
             }
         }
 
