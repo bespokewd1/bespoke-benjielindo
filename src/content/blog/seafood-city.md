@@ -6,7 +6,7 @@ date: 2024-12-06T15:26:46.705Z
 tags:
     - post
     - featured
-image: /assets/images/blog/mnh-lawyers.jpg
+image: /assets/images/blog/seafood-city.jpg
 imageAlt: People
 ---
 
