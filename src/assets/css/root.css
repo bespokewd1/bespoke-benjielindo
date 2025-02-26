@@ -1720,6 +1720,9 @@ html {
     /* 16px - 20px */
     gap: clamp(1rem, 1.5vw, 1.25rem);
   }
+  #gallery-380 .cs-item[data-layout="landscape"] {
+    flex: 1;
+  }
   #gallery-380 .cs-item {
     list-style: none;
     height: 100%;
@@ -1742,8 +1745,7 @@ html {
     left: 0;
     height: 100%;
     width: 100%;
-    /* makes it act like a background image */
-    object-fit: contain;
+    object-fit: cover;
   }
   #gallery-380 .cs-hover-box {
     padding: 16/16rem;

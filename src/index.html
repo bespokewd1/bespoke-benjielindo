@@ -9,6 +9,19 @@ eleventyNavigation:
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/local.css">
+
+    <link rel="stylesheet" href="/assets/css/photoswipe.css">
+
+<script type="module">
+    import PhotoSwipeLightbox from '/assets/js/photoswipe-lightbox.esm.js';
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#promotion-gallery',
+      children: 'a',
+      pswpModule: () => import('/assets/js/photoswipe.esm.js')
+    });
+    lightbox.init();
+</script>
 {% endblock %}
 
 {% extends 'layouts/base.html' %}
@@ -120,10 +133,10 @@ eleventyNavigation:
                 <span class="cs-topper">Get To Know</span>
                 <h2 class="cs-title">Benjie's Current Promotions</h2>
             </div>
-            <div id="promotion-gallery" class="cs-gallery">
+            <div id="promotion-gallery" class="pswp-gallery cs-gallery">
                 
                 <a class="cs-item"  href="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg" data-pswp-width="1545" 
-    data-pswp-height="2000"  target="_blank">
+    data-pswp-height="2000" data-layout="portrait"  target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg">
@@ -132,7 +145,7 @@ eleventyNavigation:
                 </a>
                 
                 <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/loan-promo.webp" data-pswp-width="1279" 
-    data-pswp-height="1136"  target="_blank">
+    data-pswp-height="1136" data-layout="landscape" target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/loan-promo.webp">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/loan-promo.webp">
@@ -141,36 +154,43 @@ eleventyNavigation:
                 </a>
 
                 <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/mnh-promo.webp" data-pswp-width="1200" 
-                    data-pswp-height="1500" target="_blank">
+                    data-pswp-height="1500"  data-layout="portrait" target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/mnh-promo.webp">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/mnh-promo.webp">
                         <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/mnh-promo.webp" alt="mnh" width="305" height="400">
                     </picture>
                 </a>
+
                 <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp" data-pswp-width="984" 
-                    data-pswp-height="1573" target="_blank">
+                    data-pswp-height="1573" data-layout="portrait" target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp">
                         <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp" alt="deep sleep" width="305" height="400">
                     </picture>
                 </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" target="_blank">
+
+                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" data-pswp-width="1294" 
+                    data-pswp-height="2000" data-layout="portrait" target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/medical-supplies.webp">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/medical-supplies.webp">
                         <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" alt="gallery" width="305" height="400">
                     </picture>
                 </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/telus-promo.webp" target="_blank">
+
+                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/telus-promo.webp" data-pswp-width="1920" 
+                    data-pswp-height="960" data-layout="landscape" target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/telus-promo.webp">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/telus-promo.webp">
                         <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/telus-promo.webp" alt="gallery" width="305" height="400">
                     </picture>
                 </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/bespoke.webp" target="_blank">
+
+                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/bespoke.webp" data-pswp-width="1200" 
+                    data-pswp-height="1006" data-layout="landscape" target="_blank">
                     <picture class="cs-image">
                         <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/bespoke.webp">
                         <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/bespoke.webp">
@@ -317,11 +337,6 @@ eleventyNavigation:
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"></path></svg>
                     </button>
 
-                    <div class="cs-carousel-dots">
-                        <span class="cs-dot active"></span>
-                        <span class="cs-dot"></span>
-                        <span class="cs-dot"></span>
-                    </div>
 
                 </div>
                 <a href="tel:1-780-885-2698" class="cs-button-solid">Call Kuya Benjie Now</a>
