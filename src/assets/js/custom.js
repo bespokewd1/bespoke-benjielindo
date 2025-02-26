@@ -1,4 +1,7 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
+
    // Get carousel elements
    const carousel = document.querySelector('#gallery-45 .cs-image-group');
    const prevBtn = document.querySelector('#gallery-45 .cs-prev');
