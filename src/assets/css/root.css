@@ -2,100 +2,100 @@
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 300;
-  src: url('../assets/fonts/poppins-v21-latin-300.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-300.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-300italic - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: italic;
   font-weight: 300;
-  src: url('../assets/fonts/poppins-v21-latin-300italic.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-300italic.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-regular - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url('../assets/fonts/poppins-v21-latin-regular.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-regular.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-italic - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: italic;
   font-weight: 400;
-  src: url('../assets/fonts/poppins-v21-latin-italic.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-italic.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-500 - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  src: url('../assets/fonts/poppins-v21-latin-500.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-500.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-500italic - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: italic;
   font-weight: 500;
-  src: url('../assets/fonts/poppins-v21-latin-500italic.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-500italic.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-600 - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  src: url('../assets/fonts/poppins-v21-latin-600.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-600.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-600italic - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: italic;
   font-weight: 600;
-  src: url('../assets/fonts/poppins-v21-latin-600italic.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-600italic.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-700 - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  src: url('../assets/fonts/poppins-v21-latin-700.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-700.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* poppins-700italic - latin */
 @font-face {
   font-display: swap;
   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: italic;
   font-weight: 700;
-  src: url('../assets/fonts/poppins-v21-latin-700italic.woff2') format('woff2');
+  src: url("../assets/fonts/poppins-v21-latin-700italic.woff2") format("woff2");
   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /*-- -------------------------- -->
@@ -104,10 +104,10 @@
 @media only screen and (min-width: 0rem) {
   :root {
     /* Add these styles to your global stylesheet, which is used across all site pages. You only need to do this once. All elements in the library derive their variables and base styles from this central sheet, simplifying site-wide edits. For instance, if you want to modify how your h2's appear across the site, you just update it once in the global styles, and the changes apply everywhere. */
-    --primary: #0067FF;
-    --primaryLight: #0067FF;
-    --secondary: #FF0000;
-    --secondaryLight: #FF0000;
+    --primary: #0067ff;
+    --primaryLight: #0067ff;
+    --secondary: #ff0000;
+    --secondaryLight: #ff0000;
     --headerColor: #1a1a1a;
     --bodyTextColor: #4e4b66;
     --bodyTextColorWhite: #fafbfc;
@@ -132,7 +132,7 @@
     box-sizing: border-box;
   }
   .cs-section-breaker {
-    background-color: #0067FF20;
+    background-color: #0067ff20;
   }
   .cs-topper {
     font-size: var(--topperFontSize);
@@ -1131,7 +1131,7 @@ html {
     list-style: none;
     /* 20px - 32px */
     padding: clamp(1.25rem, 2.3vw, 2rem);
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
     display: flex;
@@ -1368,26 +1368,48 @@ html {
     /* centers content horizontally, set to flex-start to left align */
     align-items: center;
   }
-  #gallery-45 .cs-image-group {
+  #gallery-45 .cs-carousel-wrapper {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    position: relative;
+  }
+  #gallery-45 .cs-image-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* 16px - 20px */
-    gap: clamp(1rem, 1.5vw, 1.25rem);
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 24px;
+    gap: 2.5rem;
+    padding: 1.5rem;
+    margin: 0 -1.5rem;
+  }
+  #gallery-45 .cs-image-group::-webkit-scrollbar {
+    display: none;
   }
   #gallery-45 .cs-item {
     list-style: none;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 1;
+    flex: 0 0 auto;
+    width: 80%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 1/1;
+    scroll-snap-align: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
     margin: 0;
     position: relative;
-    display: block;
-    background-color: #0067FF70;
-    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  #gallery-45 .cs-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.1);
   }
   #gallery-45 .cs-item:hover .cs-hover-box {
     opacity: 1;
@@ -1410,16 +1432,62 @@ html {
     margin: auto;
     width: 100%;
     height: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
   }
   #gallery-45 .cs-picture img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
+    position: relative;
+  }
+  #gallery-45 .cs-carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+  }
+  #gallery-45 .cs-carousel-nav:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+  #gallery-45 .cs-carousel-nav.cs-prev {
+    left: 10px;
+  }
+  #gallery-45 .cs-carousel-nav.cs-next {
+    right: 10px;
+  }
+  #gallery-45 .cs-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+  #gallery-45 .cs-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #gallery-45 .cs-dot.active {
+    background-color: var(--primary);
   }
   #gallery-45 .cs-button-solid {
     font-size: 1rem;
@@ -1456,20 +1524,30 @@ html {
   #gallery-45 .cs-button-solid:hover:before {
     width: 100%;
   }
-  #gallery-45 .cs-image-group {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 1fr;
-  }
-  #gallery-45 .cs-item {
-    grid-column: span 6;
-  }
 }
 /* In Between - 600px */
+@media only screen and (min-width: 37.5rem) {
+  #gallery-45 .cs-image-group {
+    gap: 2rem;
+  }
+}
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
   #gallery-45 .cs-item {
-    grid-column: span 2;
+    width: 33.33%;
+    max-width: 220px;
+  }
+}
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+  #gallery-45 .cs-image-group {
+    gap: 2.5rem;
+    padding: 2rem;
+    margin: 0 -2rem;
+  }
+  #gallery-45 .cs-item {
+    width: 20%;
+    max-width: 200px;
   }
 }
 /* Dark Mode */
@@ -1495,7 +1573,7 @@ html {
   }
   #services-2175:before {
     /* background color */
-    content: '';
+    content: "";
     width: 100vw;
     height: 100%;
     background: #1a1a1a;
