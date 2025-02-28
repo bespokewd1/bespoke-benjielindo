@@ -106,11 +106,11 @@
 
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      0 4px 6px -4px rgba(0, 0, 0, 0.1);
   }
 
   body {
@@ -2145,6 +2145,216 @@ html {
       }
       .cs-text {
         opacity: 0.8;
+      }
+    }
+  }
+}
+
+/*-- ------------------------- -->
+<---       Hero + Services     -->
+<--- -------------------------- -*/
+@keyframes showContent {
+  to {
+    transform: translateY(0);
+    filter: blur(0);
+    opacity: 1;
+    // visibility: visible;
+  }
+}
+
+@media only screen and (min-width: 0rem) {
+  #hero-slider {
+    // display: none;
+    padding: 0;
+    height: 100dvh;
+    // margin-top: height of the header
+    position: relative;
+
+    .list {
+      margin: 0;
+      padding: 0;
+      .item {
+        list-style: none;
+        position: absolute;
+        inset: 0 0 0 0;
+        overflow: hidden;
+        opacity: 0;
+        // visibility: hidden;
+        transition: opacity 500ms ease-in-out;
+        // visibility 500ms ease-in-out;
+
+        .picture {
+          width: 100%;
+          height: 100%;
+        }
+
+        .img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .content {
+          position: absolute;
+          left: 10%;
+          top: 20%;
+          width: 500px;
+          max-width: 80%;
+          z-index: 1;
+
+          .cs-topper {
+            text-transform: uppercase;
+            letter-spacing: (10/16em);
+          }
+
+          cs-title {
+            font-size: (100/16rem);
+            margin: 0;
+          }
+        }
+
+        &:after {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          background-image: linear-gradient(
+            to top,
+            #000 30%,
+            transparent
+          ); /*probably need to change by theme */
+        }
+
+        /* for active hero */
+        &.active {
+          opacity: 1;
+          // visibility: visible;
+          z-index: 10; /*to be stay on top*/
+
+          .content {
+            > * {
+              transform: translateY(1.8rem);
+              filter: blur(20px);
+              opacity: 0;
+              // visibility: hidden;
+              animation: showContent 500ms 700ms ease-in-out 1 forwards;
+            }
+
+            .cs-title {
+              animation-delay: 1s;
+              & ~ * {
+                animation-delay: 1.3s;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .arrows {
+      position: absolute;
+      top: 30%;
+      right: 50px;
+      z-index: 100;
+
+      button {
+        background-color: #eee5; /*can be use for theming*/
+        border: none;
+        width: (40/16rem);
+        height: (40/16rem);
+        border-radius: 5px;
+        color: #eee; /*can be change for theming*/
+        transition:
+          color 300ms,
+          background-color 300ms;
+
+        &:hover {
+          color: black; /*change for theming*/
+          background-color: #eee; /*change for theming*/
+        }
+      }
+    }
+
+    .thumbnail {
+      margin: 0;
+      position: absolute;
+      bottom: (35/16rem);
+      z-index: 11;
+      display: flex;
+      justify-content: center;
+      gap: (10/16rem);
+      width: 100%;
+      height: (250/16rem);
+      padding: 0 (50/16rem);
+      box-sizing: border-box;
+      overflow: auto;
+      // scroll-snap-type: x mandatory;
+      // scroll-padding: 0 24px;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+
+      .item {
+        list-style: none;
+        width: (150/16rem);
+        height: (220/16rem);
+        filter: brightness(0.5);
+        transition: filter 500ms linear;
+        flex-shrink: 0; /*will not cause a resize on small screen*/
+        // scroll-snap-align: start;
+
+        .cs-picture {
+          width: 100%;
+          height: 100%;
+        }
+
+        .cs-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+        .content {
+          position: absolute;
+          inset: auto 0.6rem 0.6rem 0.6rem;
+        }
+
+        &.active {
+          filter: brightness(1);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 48rem) {
+  #hero-slider {
+    .list {
+      .item {
+        .content {
+          font-size: (60/16rem);
+        }
+      }
+    }
+
+    .arrows {
+      top: 15%;
+      right: (35/16rem);
+    }
+
+    .thumbnail {
+      justify-content: start;
+      bottom: (10/16rem);
+
+      .item {
+        .content {
+          .cs-title {
+            font-size: 1rem;
+          }
+        }
       }
     }
   }

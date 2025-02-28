@@ -10,91 +10,229 @@ eleventyNavigation:
 {% block head %}
     <link rel="stylesheet" href="/assets/css/local.css">
 
+        {# hero slider js #}
+    <script src="/assets/js/hero-slider.js" defer></script>
+
     <link rel="stylesheet" href="/assets/css/photoswipe.css">
 
-<script type="module">
-    import PhotoSwipeLightbox from '/assets/js/photoswipe-lightbox.esm.js';
 
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: '#promotion-gallery',
-      children: 'a',
-      pswpModule: () => import('/assets/js/photoswipe.esm.js')
-    });
-    lightbox.init();
-</script>
+    <script type="module">
+        import PhotoSwipeLightbox from '/assets/js/photoswipe-lightbox.esm.js';
+
+        const lightbox = new PhotoSwipeLightbox({
+        gallery: '#promotion-gallery',
+        children: 'a',
+        pswpModule: () => import('/assets/js/photoswipe.esm.js')
+        });
+        lightbox.init();
+    </script>
 {% endblock %}
 
 {% extends 'layouts/base.html' %}
 
 {% block body %}
 
+                {# <picture class="cs-picture"> #}
+                {#     <source #}
+                {#     media="(max-width: 600px)" #}
+                {#     srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" #}
+                {#     /> #}
+                {#     <source #}
+                {#     media="(min-width: 601px)" #}
+                {#     srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" #}
+                {#     /> #}
+                {#     <img #}
+                {#     aria-hidden="true" #}
+                {#     decoding="async" #}
+                {#     src="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" #}
+                {#     alt="benjie-lindo" #}
+                {#     width="468" #}
+                {#     height="658" #}
+                {#     /> #}
+                {# </picture> #}
+
 
     <!-- ============================================ -->
     <!--                    Hero                      -->
     <!-- ============================================ -->
 
-    <section id="hero-1299">
-        <div class="cs-container">
-            <div class="cs-content">
-                <span class="cs-topper">Welcome to Benjie Lindo Live</span>
-                <h1 class="cs-title">Advertise Smarter. Grow Faster.</h1>
-                <p class="cs-text">
-                    Connect your business to the right audience with marketing strategies tailored to your industry. Benjie Lindo helps brands thrive with impactful campaigns and measurable results.
-                </p>
-                <a href="tel:1-780-885-2698" class="cs-button-solid">Book Your Appointment</a>
-            </div>
-            <!--To make your own background crops of people use https://www.remove.bg/-->
-            <div class="cs-picture-wrapper">
-                <picture class="cs-picture">
-                    <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp">
-                    <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp">
-                    <img aria-hidden="true" decoding="async" src="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" alt="benjie-lindo" width="468" height="658">
+      <section id="hero-slider" class="slider" >
+
+        <ul class="list">
+            <li class="item active">
+                <picture class="picture">
+                    <!--Mobile Image-->
+                    <source media="(max-width: 1023px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg">
+                    <!--Tablet and above Image-->
+                    <source media="(min-width: 1024px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg">
+                    <!--prioritize this image as this is the very first image that will be seen-->
+                    <img fetchpriority="high" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg" alt="buildings" width="1280" height="568" class="img">
                 </picture>
-            </div>
+
+                <div class="content">
+                    <p class="cs-topper">Welcome to Benjie Lindo Live</p>
+                    <h1 class="cs-title">Advertise Smarter. Grow Faster.</h1>
+                    <p class="cs-text">
+                        Connect your business to the right audience with marketing strategies
+                        tailored to your industry. Benjie Lindo helps brands thrive with
+                        impactful campaigns and measurable results.
+                    </p>
+                    <a href="tel:1-780-885-2698" class="cs-button-solid"
+                        >Book Your Appointment</a
+                    >
+                </div>
+            </li>
+
+            <li class="item">
+                <picture class="picture">
+                    <!--Mobile Image-->
+                    <source media="(max-width: 1023px)" srcset="/assets/images/brochures.webp">
+                    <!--Tablet and above Image-->
+                    <source media="(min-width: 1024px)" srcset="/assets/images/brochures.webp">
+                    <img class="img" loading="lazy" decoding="async" src="/assets/images/brochures.webp" alt="buildings" width="1280" height="568">
+                </picture>
+
+                <div class="content">
+                    <p class="cs-topper">Trusted Partnerships That Deliver</p>
+                    <h1 class="cs-title">Brand Collaborations</h1>
+                    <p class="cs-text">I only work with brands I believe in, creating authentic content that drives real engagement and results.</p>
+                    <a href="tel:1-780-885-2698" class="cs-button-solid"
+                        >Book Your Appointment</a
+                    >
+                </div>
+            </li>
+            <li class="item">
+                <picture class="picture">
+                    <!--Mobile Image-->
+                    <source media="(max-width: 1023px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Landscapes/construction-site.png">
+                    <!--Tablet and above Image-->
+                    <source media="(min-width: 1024px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Landscapes/construction-site.png">
+                    <img class="img" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Landscapes/construction-site.png" alt="buildings" width="1280" height="568">
+                </picture>
+
+                <div class="content">
+                    <p class="cs-topper">Real-Time Conversations That Connect</p>
+                    <h1 class="cs-title">Interactive Facebook Lives</h1>
+                    <p class="cs-text">
+                        Every live session is more than just a stream—I engage, answer questions, give demos, and create a real connection with my audience.
+                    </p>
+                    <a href="tel:1-780-885-2698" class="cs-button-solid"
+                        >Book Your Appointment</a
+                    >
+                </div>
+            </li>
+            <li class="item">
+                <picture class="picture">
+                    <!--Mobile Image-->
+                    <source media="(max-width: 1023px)" srcset="/assets/images/promotions/bespoke.webp">
+                    <!--Tablet and above Image-->
+                    <source media="(min-width: 1024px)" srcset="/assets/images/promotions/bespoke.webp">
+                    <img class="img" loading="lazy" decoding="async" src="/assets/images/promotions/bespoke.webp" alt="buildings" width="1280" height="568">
+                </picture>
+
+                <div class="content">
+                    <p class="cs-topper">Beyond Promotions—Real Impact</p>
+                    <h1 class="cs-title">Authentic Advocacy</h1>
+                    <p class="cs-text">
+                        I use my platform to raise awareness, share honest recommendations, and help people make informed choices that matter.
+                    </p>
+                    <a href="tel:1-780-885-2698" class="cs-button-solid"
+                        >Book Your Appointment</a
+                    >
+                </div>
+            </li>
+        </ul>
+        <div class="arrows">
+            <button id="prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button id="next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
         </div>
-        <div class="cs-container" bis_skin_checked="1">
-            <ul class="cs-card-group">        
-                <li class="cs-item">
-                    <a href="" class="cs-link">
-                        <h3 class="cs-h3">Our Vision</h3>
-                        <p class="cs-item-text">
-                            To be a leading force in digital marketing and community development, helping businesses thrive while fostering a more inclusive and compassionate society where every individual has the opportunity to succeed.
-                        </p>
-                    </a>
-                </li>
-                <li class="cs-item">
-                    <a href="" class="cs-link">
-                        <h3 class="cs-h3">Our Mission</h3>
-                        <p class="cs-item-text">
-                            To empower businesses and communities by providing expert marketing solutions and championing initiatives that support newcomers and underprivileged individuals, creating opportunities for growth and success.
-                        </p>
-                    </a>
-                </li>
-                <li class="cs-item">
-                    <a href="" class="cs-link">
-                        <h3 class="cs-h3">Core Values</h3>
-                        <p class="cs-item-text">
-                            Integrity: Honesty in all our efforts. Empowerment: Supporting growth and success. Community: Building strong, inclusive connections. Compassion: Giving back and making a difference.
-                        </p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!--Floating Arrow-->
-        <!--We wrap it in a picture element wrapper so we can use the wrapper as a box for it to live inside of instead of the section wrapper. This allows us to add overflow:hidden to the wrapper to cut off the graphic at the edge of the screen. If we added overflow:hidden to the section container it would clip the overlapping service cards. So we add this wrapper to allow us to clip only the graphic. -->
-        <picture class="cs-floater-wrapper">
-            <img class="cs-floater" aria-hidden="true" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/yellow-arrow-reversed.svg" alt="graphic" width="956" height="708">
-        </picture>
-        <!--Background Image, background image added in CSS at 1600px wide for parallax effect-->
-        <picture class="cs-background">
-            <!--Mobile Image-->
-            <source media="(max-width: 1023px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg">
-            <!--Tablet and above Image-->
-            <source media="(min-width: 1024px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg">
-            <img decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg" alt="buildings" width="1280" height="568">
-        </picture>
-    </section>
-                                
+
+        <ul class="thumbnail">
+           <li class="item active">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg" />
+                    <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg" />
+                    <img
+                        class="cs-img"
+                        loading="lazy"
+                        decoding="async"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg"
+                        alt="thumbnail of hero"
+                        width="334"
+                        height="380"
+                    />
+                </picture>
+                <div class="content">
+                    <p class="cs-topper">Welcome to Benjie Lindo Live</p>
+                    <p class="cs-title"> Advertise Smarter. Grow Faster. </p>
+                </div>
+            </li> 
+
+           <li class="item ">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="/assets/images/brochures.webp" />
+                    <source media="(min-width: 601px)" srcset="/assets/images/brochures.webp" />
+                    <img
+                        class="cs-img"
+                        loading="lazy"
+                        decoding="async"
+                        src="/assets/images/brochures.webp"
+                        alt="thumbnail of hero"
+                        width="334"
+                        height="380"
+                    />
+                </picture>
+                <div class="content">
+                    <p class="cs-topper">Trusted Partnerships That Deliver</p>
+                    <p class="cs-title">Brand Collaborations</p>
+                </div>
+            </li> 
+           <li class="item ">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Landscapes/construction-site.png" />
+                    <source media="(min-width: 601px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Landscapes/construction-site.png" />
+                    <img
+                        class="cs-img"
+                        loading="lazy"
+                        decoding="async"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Landscapes/construction-site.png"
+                        alt="thumbnail of hero"
+                        width="334"
+                        height="380"
+                    />
+                </picture>
+                <div class="content">
+                    <p class="cs-topper">Real-Time Conversations That Connect</p>
+                    <p class="cs-title">Interactive Facebook Lives</p>
+                </div>
+           </li> 
+           <li class="item">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="/assets/images/promotions/bespoke.webp" />
+                    <source media="(min-width: 601px)" srcset="/assets/images/promotions/bespoke.webp" />
+                    <img
+                        class="cs-img"
+                        loading="lazy"
+                        decoding="async"
+                        src="/assets/images/promotions/bespoke.webp"
+                        alt="thumbnail of hero"
+                        width="334"
+                        height="380"
+                    />
+                </picture>
+                <div class="content">
+                    <p class="cs-topper">Beyond Promotions—Real Impact</p>
+                    <p class="cs-title">Authentic Advocacy</p>
+                </div>
+            </li> 
+
+        </ul>
+
+    </section>                          
 
     <!-- ============================================ -->
     <!--                 Side By Side                 -->
@@ -444,7 +582,7 @@ eleventyNavigation:
 
     {% if collections.post | length == 0 %}
     {# if there is no post we will not show this section #}
-        <p style="display:none">No Recent Posts</p>
+    <p style="display:none">No Recent Posts</p>
 
     {% else %}
         <section id="three-cards">
