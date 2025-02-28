@@ -5,7 +5,7 @@
 @media only screen and (min-width: 0em) {
   .blog-container {
     width: 94%;
-    max-width: 70em;
+    max-width: 90em;
     margin: auto;
   }
   .blog-link {
@@ -203,12 +203,13 @@
     row-gap: 3.125em;
   }
   .main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 2rem;
     width: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 3.125em;
+    gap: 3.125em;
   }
 }
 /* Tablet - 1024px */
