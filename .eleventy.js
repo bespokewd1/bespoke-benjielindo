@@ -5,7 +5,7 @@ const pluginEleventyNavigation = require("@11ty/eleventy-navigation");
 // Other
 const filterFormatDate = require("./src/config/filters/formatDate");
 
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
     /**
      *  PLUGINS
      *      Adds additional eleventy functionality through official or community-created add-ons
@@ -29,8 +29,10 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./src/assets/favicons");
     eleventyConfig.addPassthroughCopy("./src/assets/fonts");
     eleventyConfig.addPassthroughCopy("./src/assets/images");
+    eleventyConfig.addPassthroughCopy("./src/assets/images/promotions/");
     eleventyConfig.addPassthroughCopy("./src/assets/js");
     eleventyConfig.addPassthroughCopy("./src/assets/svgs");
+    eleventyConfig.addPassthroughCopy("./src/_data/promotions.js");
     eleventyConfig.addPassthroughCopy("./src/admin");
     eleventyConfig.addPassthroughCopy({ "admin/config.yml": "admin/config.yml" });
 

@@ -1,0 +1,20 @@
+<div id="promotion-gallery" class="pswp-gallery cs-gallery">
+  {% for imgUrl in promotions %}
+
+  <a class="cs-item" href="{{ imgUrl }}" target="_blank">
+    <picture class="cs-image">
+      <source media="(max-width: 600px)" srcset="{{ imgUrl }}" />
+      <source media="(min-width: 601px)" srcset="{{ imgUrl }}" />
+      <img
+        loading="lazy"
+        decoding="async"
+        src="{{ imgUrl }}"
+        alt="loan promo"
+        width="300"
+        height="450"
+        class="promo-img"
+      />
+    </picture>
+  </a>
+  {% endfor %}
+</div>

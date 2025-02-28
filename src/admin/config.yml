@@ -139,11 +139,10 @@ collections:
             widget: markdown
     - label: Promotions
       name: promotions
-      folder: src/content/promotions
+      folder: src/assets/images
       create: true
       slug: "{{slug}}"
-      media_folder: "src/assets/images/promotions"
-      public_folder: "/assets/images/promotions"
+      media_folder: "promotions"
       fields:
           - label: Title
             name: title

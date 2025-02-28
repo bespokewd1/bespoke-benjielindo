@@ -10,6 +10,21 @@ eleventyNavigation:
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/about.css">
+
+    <script src="/assets/js/promotion-gallery.js" defer></script>
+
+    <link rel="stylesheet" href="/assets/css/photoswipe.css">
+
+    <script type="module">
+        import PhotoSwipeLightbox from '/assets/js/photoswipe-lightbox.esm.js';
+
+        const lightbox = new PhotoSwipeLightbox({
+        gallery: '#promotion-gallery',
+        children: 'a',
+        pswpModule: () => import('/assets/js/photoswipe.esm.js')
+        });
+        lightbox.init();
+    </script>
 {% endblock %}
 
 {% extends 'layouts/base.html' %}
@@ -36,136 +51,160 @@ eleventyNavigation:
     <!--                  Promotions                  -->
     <!-- ============================================ -->
 
-    <section id="gallery-380">
-        <div class="cs-container">
-            <div class="cs-content">
-                <span class="cs-topper">Get To Know</span>
-                <h2 class="cs-title">Benjie's Current Promotions</h2>
-            </div>
-            <div class="cs-gallery">
+        {% if  promotions.length | length == 0 %}
+        {# if there is no image in the promotion folder we will not display anything #}
+        <p style="display:none">No Recent Posts</p>
 
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg">
-                        <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg">
-                        <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg" alt="loan promo" width="305" height="400">
-                    </picture>
-                </a>
-                
-                <a class="cs-item" href="/assets/images/promotions/mtg-heathcare-academy-new.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="/assets/images/promotions/mtg-heathcare-academy-new.webp">
-                        <source media="(min-width: 601px)" srcset="/assets/images/promotions/mtg-heathcare-academy-new.webp">
-                        <img loading="lazy" decoding="async" src="/assets/images/promotions/mtg-heathcare-academy-new.webp" alt="gallery" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/loan-promo.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/loan-promo.webp">
-                        <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/loan-promo.webp">
-                        <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/loan-promo.webp" alt="loan promo" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/mnh-promo.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/mnh-promo.webp">
-                        <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/mnh-promo.webp">
-                        <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/mnh-promo.webp" alt="mnh" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp">
-                        <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp">
-                        <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp" alt="deep sleep" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/medical-supplies.webp">
-                        <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/medical-supplies.webp">
-                        <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" alt="gallery" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/telus-promo.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/telus-promo.webp">
-                        <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/telus-promo.webp">
-                        <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/telus-promo.webp" alt="gallery" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="/assets/images/promotions/prairie-western-college.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="/assets/images/promotions/prairie-western-college.webp">
-                        <source media="(min-width: 601px)" srcset="/assets/images/promotions/prairie-western-college.webp">
-                        <img loading="lazy" decoding="async" src="/assets/images/promotions/prairie-western-college.webp" alt="gallery" width="305" height="400">
-                    </picture>
-                </a>
-                <a class="cs-item" href="/assets/images/promotions/ryan-mercado.webp" target="_blank">
-                    <div class="cs-hover-box">
-                        <picture class="cs-icon" aria-hidden="true">
-                            <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24">
-                        </picture>
-                        <h3 class="cs-h3">Open Full Image</h3>
-                    </div>
-                    <picture class="cs-image">
-                        <source media="(max-width: 600px)" srcset="/assets/images/promotions/ryan-mercado.webp">
-                        <source media="(min-width: 601px)" srcset="/assets/images/promotions/ryan-mercado.webp">
-                        <img loading="lazy" decoding="async" src="/assets/images/promotions/ryan-mercado.webp" alt="gallery" width="305" height="400">
-                    </picture>
-                </a>
+            {% else %}
+        <section id="gallery-380">
+            <div class="cs-container">
+                <div class="cs-content">
+                    <span class="cs-topper">Get To Know</span>
+                    <h2 class="cs-title">Benjie's Current Promotions</h2>
+                </div>
+
+                    {% include "components/promotion-gallery.html" %}
+
+                <a href="tel:1-780-885-2698"" class="cs-button-solid">Avail These Promos Now</a>
             </div>
-            <a href="tel:1-780-885-2698"" class="cs-button-solid">Avail These Promos Now</a>
-        </div>
-    </section>        
+        </section>                          
+            {% endif %}
+
+
+    <!-- <!-- ============================================ --> -->
+    <!-- <!--                  Promotions                  --> -->
+    <!-- <!-- ============================================ --> -->
+    <!---->
+    <!-- <section id="gallery-380"> -->
+    <!--     <div class="cs-container"> -->
+    <!--         <div class="cs-content"> -->
+    <!--             <span class="cs-topper">Get To Know</span> -->
+    <!--             <h2 class="cs-title">Benjie's Current Promotions</h2> -->
+    <!--         </div> -->
+    <!--         <div class="cs-gallery"> -->
+    <!---->
+    <!--             <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg"> -->
+    <!--                     <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/Harvesthills-Dental.jpeg" alt="loan promo" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--              -->
+    <!--             <a class="cs-item" href="/assets/images/promotions/mtg-heathcare-academy-new.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="/assets/images/promotions/mtg-heathcare-academy-new.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="/assets/images/promotions/mtg-heathcare-academy-new.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="/assets/images/promotions/mtg-heathcare-academy-new.webp" alt="gallery" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/loan-promo.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/loan-promo.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/loan-promo.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/loan-promo.webp" alt="loan promo" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/mnh-promo.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/mnh-promo.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/mnh-promo.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/mnh-promo.webp" alt="mnh" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/deep-sleep-promo.webp" alt="deep sleep" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/medical-supplies.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/medical-supplies.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/medical-supplies.webp" alt="gallery" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="{{ client.domain }}/assets/images/promotions/telus-promo.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="{{ client.domain }}/assets/images/promotions/telus-promo.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="{{ client.domain }}/assets/images/promotions/telus-promo.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="{{ client.domain }}/assets/images/promotions/telus-promo.webp" alt="gallery" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="/assets/images/promotions/prairie-western-college.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="/assets/images/promotions/prairie-western-college.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="/assets/images/promotions/prairie-western-college.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="/assets/images/promotions/prairie-western-college.webp" alt="gallery" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--             <a class="cs-item" href="/assets/images/promotions/ryan-mercado.webp" target="_blank"> -->
+    <!--                 <div class="cs-hover-box"> -->
+    <!--                     <picture class="cs-icon" aria-hidden="true"> -->
+    <!--                         <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Gallery/arrows.svg" alt="icon" width="24" height="24"> -->
+    <!--                     </picture> -->
+    <!--                     <h3 class="cs-h3">Open Full Image</h3> -->
+    <!--                 </div> -->
+    <!--                 <picture class="cs-image"> -->
+    <!--                     <source media="(max-width: 600px)" srcset="/assets/images/promotions/ryan-mercado.webp"> -->
+    <!--                     <source media="(min-width: 601px)" srcset="/assets/images/promotions/ryan-mercado.webp"> -->
+    <!--                     <img loading="lazy" decoding="async" src="/assets/images/promotions/ryan-mercado.webp" alt="gallery" width="305" height="400"> -->
+    <!--                 </picture> -->
+    <!--             </a> -->
+    <!--         </div> -->
+    <!--         <a href="tel:1-780-885-2698"" class="cs-button-solid">Avail These Promos Now</a> -->
+    <!--     </div> -->
+    <!-- </section>         -->
 
 <!-- ============================================ -->
 <!--                   Brands                    -->
