@@ -2249,6 +2249,7 @@ html {
           gap: 0.5rem;
 
           .cs-topper {
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: (10/16em);
             margin: 0;
@@ -2316,9 +2317,9 @@ html {
       button {
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px); /* Safari support */
-        background-color: rgba(255, 255, 255, 0.65); /* Light mode base */
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: rgba(40, 40, 40, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
         box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
 
         // background-color: #eee5; /*can be use for theming*/
@@ -2326,7 +2327,8 @@ html {
         width: (40/16rem);
         height: (40/16rem);
         border-radius: 5px;
-        color: var(--headerColor);
+
+        color: var(--bodyTextColorWhite);
         transition:
           color 300ms,
           background-color 300ms;
@@ -2578,6 +2580,9 @@ html {
 
     .list {
       .item {
+        &:after {
+          background-image: linear-gradient(to top, #fff 5%, transparent;);
+        }
         .content {
           top: 20%;
           right: 35%;
@@ -2614,6 +2619,20 @@ html {
 
           &:after {
             background: linear-gradient(to top, #000 5%, transparent);
+          }
+        }
+      }
+
+      .arrows {
+        button {
+          background-color: rgba(255, 255, 255, 0.65);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+
+          color: var(--headerColor);
+
+          &:hover {
+            color: var(--bodyTextColorWhite); /*change for theming*/
+            background-color: #000; /*change for theming*/
           }
         }
       }
