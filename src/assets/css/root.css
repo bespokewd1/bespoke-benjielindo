@@ -1884,8 +1884,8 @@ html {
 @media only screen and (min-width: 0rem) {
   #hero-slider {
     padding: 0;
-    height: 100dvh;
     position: relative;
+    min-height: 56.25rem;
   }
   #hero-slider > .hero-picture {
     position: absolute;
@@ -2014,6 +2014,7 @@ html {
     box-sizing: border-box;
     overflow: auto;
     scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
   #hero-slider .thumbnail::-webkit-scrollbar {
     width: 0;
@@ -2076,7 +2077,7 @@ html {
     left: 50%;
     right: unset;
     gap: 1rem;
-    top: 45%;
+    top: 40%;
     transform: translateX(-50%);
     max-width: 95%;
   }
@@ -2132,6 +2133,9 @@ html {
 }
 /*desktop */
 @media only screen and (min-width: 769px) {
+  #hero-slider {
+    min-height: 1080px;
+  }
   #hero-slider > .hero-picture {
     left: 40%;
     transform: translate(-50%, -50%);
@@ -2152,12 +2156,16 @@ html {
   }
 }
 @media only screen and (min-width: 64rem) {
+  #hero-slider {
+    min-height: 100dvh;
+  }
   #hero-slider > .hero-picture {
-    left: 45%;
-    transform: translate(-50%, -50%);
+    left: 30%;
+    transform: translate(-70%, -50%);
   }
   #hero-slider > .hero-picture > .hero-image {
-    width: 40%;
+    width: 100%;
+    max-width: 310px;
   }
   #hero-slider .list .item:after {
     background-image: linear-gradient(to top, #fff 5%, transparent);

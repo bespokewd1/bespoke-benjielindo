@@ -8,7 +8,7 @@
         "watch:less": "less-watch-compiler ./src/assets/less ./src/assets/css",
         "watch:cms": "npx decap-server",
         "build:eleventy": "cross-env ELEVENTY_ENV=PROD eleventy",
-        "watch:eleventy": "cross-env ELEVENTY_ENV=DEV eleventy --serve",
+        "watch:eleventy": "cross-env ELEVENTY_ENV=DEV eleventy --serve ",
         "start": "run-p watch:*",
         "build": "run-s build:*"
     },
