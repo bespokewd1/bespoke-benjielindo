@@ -667,9 +667,9 @@ html {
     .cs-ul-wrapper {
       /* absolutely positioned to be dead center */
       position: absolute;
-      left: 50%;
+      left: 45%;
       top: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-60%, -50%);
     }
 
     .cs-ul {
@@ -764,7 +764,6 @@ html {
 /* Mobile - 360px - Contains hover state */
 @media only screen and (min-width: 0rem) {
   #cs-footer-105 {
-    display: none;
     padding: 2.5em 1em 1.25rem;
 
     .cs-container {
@@ -778,12 +777,17 @@ html {
       padding: 0 0 2.5rem;
       margin: auto;
       border-bottom: 1px solid #eff0f6;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-around;
+      align-content: center;
     }
 
     .cs-li {
       list-style: none;
       text-align: center;
-      margin-bottom: 1.25rem;
+      // margin-bottom: 1.25rem;
 
       &:last-of-type {
         margin-bottom: 0;
@@ -870,6 +874,7 @@ html {
       // margin: 0 clamp(2.8125rem, 7vw, 5.5rem) 0 0;
 
       &:last-of-type {
+        flex: unset;
         margin: 0;
         /* margin-left auto will push everything away and force it to the farthest right edge */
         margin-left: auto;

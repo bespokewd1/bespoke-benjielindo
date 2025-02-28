@@ -406,7 +406,7 @@
 @media only screen and (min-width: 0rem) {
   #sbs-523 {
     padding: var(--sectionPadding);
-    padding-top: 31rem;
+    padding-top: 08rem;
   }
   @keyframes floatAnimation {
     0% {
@@ -521,9 +521,6 @@
 }
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-  #sbs-523 {
-    padding-top: 13rem;
-  }
   #sbs-523 .cs-container {
     max-width: 80rem;
     flex-direction: row;
@@ -589,7 +586,7 @@
     transition: color 0.2s;
   }
   #three-cards .cs-button-solid {
-    font-size: 1rem;
+    font-size: 0.8rem;
     /* 46px - 56px */
     line-height: clamp(2.875em, 5.5vw, 3.5em);
     text-decoration: none;
@@ -840,6 +837,9 @@
   }
   #three-cards .cs-item .cs-link {
     color: #fff;
+  }
+  #three-cards .cs-item .cs-button-solid {
+    font-size: 1rem;
   }
   #three-cards .cs-item .cs-button-solid:before {
     width: 100%;

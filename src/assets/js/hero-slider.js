@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
          refreshInterval = setInterval(() => {
             next.click();
          }, 5000);
-         console.log("Auto-slide started"); // For debugging
       }
    }
 
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isAutoSliding) { // Prevent clearing if not active
          isAutoSliding = false;
          clearInterval(refreshInterval);
-         console.log("Auto-slide stopped"); // For debugging
       }
    }
 
