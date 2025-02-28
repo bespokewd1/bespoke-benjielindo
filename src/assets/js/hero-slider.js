@@ -1,11 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-   const items = document.querySelectorAll('.slider .list .item');
-   const next = document.getElementById('next');
-   const prev = document.getElementById('prev');
-   const thumbnails = document.querySelectorAll('.thumbnail .item');
-   const heroSliderSection = document.getElementById('hero-slider');
 
-   //  config param
+document.addEventListener("DOMContentLoaded", function () {
+   const items = document.querySelectorAll(".slider .list .item");
+   const next = document.getElementById("next");
+   const prev = document.getElementById("prev");
+   const thumbnails = document.querySelectorAll(".thumbnail .item");
+   const heroSliderSection = document.getElementById("hero-slider");
+
+   // config parameters
    const countItem = items.length;
    let itemActive = 0;
    let refreshInterval;
@@ -53,50 +54,66 @@ document.addEventListener("DOMContentLoaded", function () {
    };
 
    function showSlider() {
-      const itemActiveOld = document.querySelector('.slider .list .item.active');
-      const thumbnailActiveOld = document.querySelector('.thumbnail .item.active');
+      // Remove the active class from the previously active slider item and thumbnail
+      const itemActiveOld = document.querySelector(".slider .list .item.active");
+      const thumbnailActiveOld = document.querySelector(
+         ".thumbnail .item.active"
+      );
 
-      itemActiveOld.classList.remove('active');
-      thumbnailActiveOld.classList.remove('active');
+      if (itemActiveOld) {
+         itemActiveOld.classList.remove("active");
+      }
+      if (thumbnailActiveOld) {
+         thumbnailActiveOld.classList.remove("active");
+      }
 
-      items[itemActive].classList.add('active');
-      thumbnails[itemActive].classList.add('active');
+      // Add active class to the current slider item and its corresponding thumbnail
+      items[itemActive].classList.add("active");
+      thumbnails[itemActive].classList.add("active");
 
-      const thumbnailContainer = document.querySelector('.thumbnail');
+      // Adjust the thumbnail container horizontally so that the active thumbnail 
+      // is fully visible without affecting vertical scrolling
+      const thumbnailContainer = document.querySelector(".thumbnail");
       const activeThumbnail = thumbnails[itemActive];
 
       if (thumbnailContainer && activeThumbnail) {
          const containerRect = thumbnailContainer.getBoundingClientRect();
-         const thumbnailRect = activeThumbnail.getBoundingClientRect();
+         const thumbRect = activeThumbnail.getBoundingClientRect();
 
-         const isFullyVisible = (
-            thumbnailRect.left >= containerRect.left &&
-            thumbnailRect.right <= containerRect.right
-         );
-
-         if (!isFullyVisible) {
-            console.log("Thumbnail already fully visible, skipping scrollIntoView");
-         } else {
-            // thumbnails[itemActive].scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
+         // If the thumbnail is partially off-screen on the left:
+         if (thumbRect.left < containerRect.left) {
+            thumbnailContainer.scrollBy({
+               left: thumbRect.left - containerRect.left,
+               behavior: "smooth"
+            });
+         }
+         // If the thumbnail is partially off-screen on the right:
+         else if (thumbRect.right > containerRect.right) {
+            thumbnailContainer.scrollBy({
+               left: thumbRect.right - containerRect.right,
+               behavior: "smooth"
+            });
          }
       }
    }
 
+   // Clicking on a thumbnail switches the slider to the corresponding item.
    thumbnails.forEach((thumbnail, index) => {
-      thumbnail.addEventListener('click', () => {
+      thumbnail.addEventListener("click", () => {
          itemActive = index;
          showSlider();
          resetAutoSlide();
       });
    });
 
+   // Observer to start/stop auto sliding based on the slider's visibility
    const observerOptions = {
       root: null,
       threshold: 0.2
    };
 
-   const heroSectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+   const heroSectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
          if (entry.isIntersecting) {
             startAutoSlide();
          } else {
@@ -107,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
    heroSectionObserver.observe(heroSliderSection);
 
+   // Start auto sliding if the slider is initially in the viewport
    if (heroSliderSection.getBoundingClientRect().top < window.innerHeight) {
       startAutoSlide();
    }
