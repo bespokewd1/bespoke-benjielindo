@@ -137,3 +137,23 @@ collections:
           - label: Body
             name: body
             widget: markdown
+    - label: Promotions
+      name: promotions
+      folder: src/content/promotions
+      create: true
+      slug: "{{slug}}"
+      media_folder: "src/assets/images/promotions"
+      public_folder: "/assets/images/promotions"
+      fields:
+          - label: Title
+            name: title
+            widget: string
+          - label: Image
+            name: image
+            widget: image
+          - label: Image Caption
+            name: imageAlt
+            widget: string
+          - label: Description
+            name: description
+            widget: string
