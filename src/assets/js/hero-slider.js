@@ -3,39 +3,37 @@ document.addEventListener("DOMContentLoaded", function () {
    const next = document.getElementById('next');
    const prev = document.getElementById('prev');
    const thumbnails = document.querySelectorAll('.thumbnail .item');
-   const heroSliderSection = document.getElementById('hero-slider'); // Get the hero section
+   const heroSliderSection = document.getElementById('hero-slider');
 
    //  config param
    const countItem = items.length;
    let itemActive = 0;
-   let refreshInterval; // Declare refreshInterval outside for scope
-   let isAutoSliding = false; // Track if auto-sliding is currently active
+   let refreshInterval;
+   let isAutoSliding = false;
 
-   // Function to start auto-slide
    function startAutoSlide() {
-      if (!isAutoSliding) { // Prevent starting multiple intervals
+      if (!isAutoSliding) {
          isAutoSliding = true;
          refreshInterval = setInterval(() => {
             next.click();
-         }, 5000);
+         }, 3000);
+         console.log("Auto-slide started");
       }
    }
 
-   // Function to stop auto-slide
    function stopAutoSlide() {
-      if (isAutoSliding) { // Prevent clearing if not active
+      if (isAutoSliding) {
          isAutoSliding = false;
          clearInterval(refreshInterval);
+         console.log("Auto-slide stopped");
       }
    }
 
-   // Function to reset auto-slide (restart timer on user interaction)
    function resetAutoSlide() {
-      stopAutoSlide(); // First stop any existing interval
-      startAutoSlide(); // Then restart a new interval
+      stopAutoSlide();
+      startAutoSlide();
    }
 
-   // event next click
    next.onclick = function () {
       itemActive = itemActive + 1;
       if (itemActive >= countItem) {
@@ -63,36 +61,52 @@ document.addEventListener("DOMContentLoaded", function () {
 
       items[itemActive].classList.add('active');
       thumbnails[itemActive].classList.add('active');
-      thumbnails[itemActive].scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
+
+      const thumbnailContainer = document.querySelector('.thumbnail');
+      const activeThumbnail = thumbnails[itemActive];
+
+      if (thumbnailContainer && activeThumbnail) {
+         const containerRect = thumbnailContainer.getBoundingClientRect();
+         const thumbnailRect = activeThumbnail.getBoundingClientRect();
+
+         const isFullyVisible = (
+            thumbnailRect.left >= containerRect.left &&
+            thumbnailRect.right <= containerRect.right
+         );
+
+         if (!isFullyVisible) {
+            console.log("Thumbnail already fully visible, skipping scrollIntoView");
+         } else {
+            // thumbnails[itemActive].scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
+         }
+      }
    }
 
    thumbnails.forEach((thumbnail, index) => {
       thumbnail.addEventListener('click', () => {
          itemActive = index;
          showSlider();
-         resetAutoSlide(); // Reset on thumbnail click as well
+         resetAutoSlide();
       });
    });
 
-   // Intersection Observer setup
    const observerOptions = {
-      root: null, // Use the viewport as the root
-      threshold: 0.2  // Trigger when 20% of the section is visible (adjust as needed)
+      root: null,
+      threshold: 0.2
    };
 
    const heroSectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
          if (entry.isIntersecting) {
-            startAutoSlide(); // Start auto-slide when section is in view
+            startAutoSlide();
          } else {
-            stopAutoSlide();  // Stop auto-slide when section is out of view
+            stopAutoSlide();
          }
       });
    }, observerOptions);
 
-   heroSectionObserver.observe(heroSliderSection); // Start observing the hero section
+   heroSectionObserver.observe(heroSliderSection);
 
-   // Initial check in case the section is in view on page load (optional, but good practice)
    if (heroSliderSection.getBoundingClientRect().top < window.innerHeight) {
       startAutoSlide();
    }
