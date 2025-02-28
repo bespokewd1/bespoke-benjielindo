@@ -2196,13 +2196,12 @@ html {
     // margin-top: height of the header
     position: relative;
 
-    > .cs-picture {
+    > .hero-picture {
       position: absolute;
       z-index: 100;
       background-color: transparent;
-      .cs-image {
+      .hero-image {
         object-fit: contain;
-        width: 200px;
       }
     }
 
@@ -2239,14 +2238,25 @@ html {
           max-width: 80%;
           z-index: 1;
 
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          gap: 0.5rem;
+
           .cs-topper {
             text-transform: uppercase;
             letter-spacing: (10/16em);
+            margin: 0;
           }
 
-          cs-title {
+          .cs-title {
             font-size: (100/16rem);
             margin: 0;
+          }
+
+          .cs-button-solid {
+            border-radius: 4px;
+            width: fit-content;
           }
         }
 
@@ -2299,12 +2309,19 @@ html {
       z-index: 100;
 
       button {
-        background-color: #eee5; /*can be use for theming*/
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        background-color: rgba(255, 255, 255, 0.65); /* Light mode base */
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+
+        // background-color: #eee5; /*can be use for theming*/
         border: none;
         width: (40/16rem);
         height: (40/16rem);
         border-radius: 5px;
-        color: #eee; /*can be change for theming*/
+        color: var(--headerColor);
         transition:
           color 300ms,
           background-color 300ms;
@@ -2312,6 +2329,9 @@ html {
         &:hover {
           color: black; /*change for theming*/
           background-color: #eee; /*change for theming*/
+        }
+        svg {
+          margin-top: 3px;
         }
       }
     }
@@ -2369,20 +2389,78 @@ html {
   }
 }
 
+@media only screen and (max-width: 26.5rem) {
+  #hero-slider {
+    .list {
+      li.item {
+        div.content {
+          top: 35%;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 37.5rem) {
   #hero-slider {
-    > .cs-picture {
-      display: none;
+    > .hero-picture {
+      top: 13%;
+
+      > .hero-image {
+        width: clamp(170px, 45vw, 250px);
+        height: 100%;
+      }
     }
 
     .list {
       .item {
         div.content {
           left: 50%;
+          right: unset;
+          gap: 1rem;
+          top: 45%;
           transform: translateX(-50%);
-          max-width: 80%;
+          max-width: 95%;
+
+          .cs-topper {
+            // display: none;
+          }
+
+          .cs-title {
+            font-size: 1.5rem;
+          }
+        }
+
+        &:after {
+          background-image: linear-gradient(
+            to top,
+            #fff 30%,
+            transparent
+          ); /*probably need to change by theme */
         }
       }
+    }
+
+    ul {
+      &.thumbnail {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  #hero-slider {
+    > .hero-picture {
+      top: 13%;
+
+      > .hero-image {
+        // width: 200px;
+        width: 50%;
+        // width: clamp(170px, 45vw, 250px);
+        // height: 100%;
+      }
+
     }
   }
 }

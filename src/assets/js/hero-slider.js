@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
          isAutoSliding = true;
          refreshInterval = setInterval(() => {
             next.click();
-         }, 3000);
+         }, 5000);
          console.log("Auto-slide started"); // For debugging
       }
    }
