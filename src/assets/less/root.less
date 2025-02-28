@@ -2170,7 +2170,7 @@ html {
     // margin-top: height of the header
     position: relative;
 
-    .cs-picture {
+    > .cs-picture {
       position: absolute;
       z-index: 100;
       background-color: transparent;
@@ -2343,11 +2343,30 @@ html {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  #hero-slider {
+    > .cs-picture {
+      display: none;
+    }
+
+    .list {
+      .item {
+        div.content {
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 80%;
+        }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 48rem) {
   #hero-slider {
     .list {
       .item {
         .content {
+          max-width: 50%;
           font-size: (60/16rem);
         }
       }
