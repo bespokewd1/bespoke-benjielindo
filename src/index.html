@@ -32,24 +32,7 @@ eleventyNavigation:
 
 {% block body %}
 
-                {# <picture class="cs-picture"> #}
-                {#     <source #}
-                {#     media="(max-width: 600px)" #}
-                {#     srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" #}
-                {#     /> #}
-                {#     <source #}
-                {#     media="(min-width: 601px)" #}
-                {#     srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" #}
-                {#     /> #}
-                {#     <img #}
-                {#     aria-hidden="true" #}
-                {#     decoding="async" #}
-                {#     src="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp" #}
-                {#     alt="benjie-lindo" #}
-                {#     width="468" #}
-                {#     height="658" #}
-                {#     /> #}
-                {# </picture> #}
+                
 
 
     <!-- ============================================ -->
@@ -58,8 +41,29 @@ eleventyNavigation:
 
       <section id="hero-slider" class="slider" >
 
+                <picture class="cs-picture">
+                        <source
+                        media="(max-width: 600px)"
+                        srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
+                        />
+                        <source
+                        media="(min-width: 601px)"
+                        srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
+                        />
+                        <img
+                        aria-hidden="true"
+                        decoding="async"
+                        src="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
+                        alt="benjie-lindo"
+                        width="468"
+                        height="658"
+                        class="cs-image"
+                        />
+                    </picture>
+
         <ul class="list">
             <li class="item active">
+                    <!--Image background -->
                 <picture class="picture">
                     <!--Mobile Image-->
                     <source media="(max-width: 1023px)" srcset="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-t-reversed2.jpg">
@@ -68,6 +72,7 @@ eleventyNavigation:
                     <!--prioritize this image as this is the very first image that will be seen-->
                     <img fetchpriority="high" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Graphics/buildings-reversed2.jpg" alt="buildings" width="1280" height="568" class="img">
                 </picture>
+
 
                 <div class="content">
                     <p class="cs-topper">Welcome to Benjie Lindo Live</p>

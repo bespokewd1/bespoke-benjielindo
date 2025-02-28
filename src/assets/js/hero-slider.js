@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
    const items = document.querySelectorAll('.slider .list .item')
    const next = document.getElementById('next')
@@ -8,6 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
    //  config param
    const countItem = items.length
    let itemActive = 0
+   let refreshInterval; // Declare refreshInterval outside the setInterval for scope
+
+   // Function to start/reset the interval
+   function startAutoSlide() {
+      refreshInterval = setInterval(() => {
+         next.click();
+      }, 3000);
+   }
 
    // event next click
    next.onclick = function () {
@@ -18,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       showSlider()
+      resetAutoSlide(); // Reset the auto-slide timer on next click
    }
 
    prev.onclick = function () {
@@ -25,12 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (itemActive < 0) {
          itemActive = countItem - 1
       }
+      showSlider()
+      resetAutoSlide(); // Reset the auto-slide timer on prev click
    }
 
-   //auto run slider
-   const refreshInterval = setInterval(() => {
-      next.click();
-   }, 3000)
+   function resetAutoSlide() {
+      clearInterval(refreshInterval); // Clear the existing interval
+      startAutoSlide();             // Start a new interval
+   }
 
 
    function showSlider() {
@@ -42,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       items[itemActive].classList.add('active')
       thumbnails[itemActive].classList.add('active')
-      thumbnails[itemActive].scrollIntoView({ behavior: smooth, inline: 'start' });
+      thumbnails[itemActive].scrollIntoView({ behavior: 'instant', inline: 'start', block: 'nearest' });
 
-      clearInterval(refreshInterval)
+      // clearInterval(refreshInterval)  <- REMOVED THIS LINE (Correctly removed from here)
    }
 
 
@@ -52,7 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail.addEventListener('click', () => {
          itemActive = index
          showSlider()
+         resetAutoSlide(); // Reset auto-slide on thumbnail click too if you want
       })
    })
-})
 
+   startAutoSlide(); // Initial start of auto-slide
+})
