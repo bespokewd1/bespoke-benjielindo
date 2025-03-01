@@ -119,6 +119,7 @@
     /* 60px - 100px top and bottom */
     --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
     --bodyFontFamily: Poppins, Helvetica, sans-serif;
+    --bodyBgColor: #f8fafc;
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
       0 1px 2px -1px rgba(0, 0, 0, 0.1);
@@ -131,6 +132,7 @@
     font-family: var(--bodyFontFamily);
     margin: 0;
     padding: 0;
+    background-color: var(--bodyBgColor);
   }
   *,
   *:before,
@@ -1708,6 +1710,7 @@ html {
     max-width: 75rem;
     margin: auto;
     display: flex;
+    /* Keep flex for overall container alignment */
     flex-direction: column;
     align-items: center;
     /* 48px - 64px */
@@ -1726,33 +1729,44 @@ html {
     width: 100%;
     padding: 0;
     margin: 0;
-    display: flex;
+    display: grid;
+    /* Change to CSS Grid */
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    /* Responsive columns, min width based on your .cs-item max-width */
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    /* 16px - 20px */
+    /* Center the grid items horizontally */
     gap: clamp(1rem, 1.5vw, 1.25rem);
-  }
-  #gallery-380 .cs-item[data-layout="landscape"] {
-    flex: 1;
   }
   #gallery-380 .cs-item {
     list-style: none;
-    height: 100%;
+    height: auto;
+    /* Let height be determined by content */
     width: 100%;
-    max-width: 350/16rem;
+    /* Take full width of grid cell */
     position: relative;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    border: 1px solid var(--headerColor);
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
+    transition: box-shadow 200ms ease();
+  }
+  #gallery-380 .cs-item[data-layout="landscape"] {
+    grid-column: span 2;
+    /* Make landscape items span 2 columns */
   }
   #gallery-380 .cs-image {
-    border-radius: 20/16rem;
+    border-radius: 0.5rem;
     width: 100%;
     /* clips the image corners */
     overflow: hidden;
-    aspect-ratio: 328/300;
+    aspect-ratio: 1 / 1;
+    /* Default to square aspect ratio, adjust if needed */
     display: block;
     position: relative;
   }
   #gallery-380 .cs-image img {
+    border-radius: 0.5rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -1803,12 +1817,25 @@ html {
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
+  #gallery-380 {
+    /* Style for trailing landscape items to span full width */
+  }
   #gallery-380 .cs-gallery {
-    flex-direction: row;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
+    /* Fixed 3 columns on tablet and above */
+  }
+  #gallery-380 .cs-item:nth-last-child(2)[data-layout="landscape"]:has(
+        + .cs-item[data-layout="landscape"]
+      ),
+  #gallery-380 .cs-item:nth-last-child(2)[data-layout="landscape"] + .cs-item:last-child[data-layout="landscape"] {
+    grid-column: 1 / -1;
+  }
+  #gallery-380 .cs-item-fullwidth-trailing-landscape {
+    grid-column: 1 / -1;
   }
   #gallery-380 .cs-item {
-    width: 48.5%;
+    width: auto;
+    /* No fixed width on tablet and above, grid controls width */
   }
   #gallery-380 .cs-item:hover .cs-hover-box {
     opacity: 1;
@@ -1849,19 +1876,23 @@ html {
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   #gallery-380 .cs-item {
-    width: 26%;
-    max-width: 305/16rem;
+    max-width: none;
+    /* Remove max-width, grid controls width */
   }
   #gallery-380 .cs-image {
     /* 300px - 400px */
     height: clamp(18.75rem, 30vw, 25rem);
     aspect-ratio: 1;
+    /* Keep aspect ratio 1:1 or adjust if needed */
   }
 }
 /* Dark Mode */
 @media only screen and (min-width: 0rem) {
   body.dark-mode #gallery-380 .cs-topper {
     color: var(--primaryLight);
+  }
+  body.dark-mode #gallery-380 .cs-item {
+    box-shadow: 12px 12px 12px #0206174d, -10px -10px 10px rgba(0, 0, 0, 0.3);
   }
   body.dark-mode #gallery-380 .cs-title,
   body.dark-mode #gallery-380 .cs-text {
@@ -1950,7 +1981,7 @@ html {
     position: absolute;
     left: 0;
     bottom: 0;
-    background-image: linear-gradient(to top, #fff 10%, transparent);
+    background-image: linear-gradient(to top, var(--bodyBgColor) 10%, transparent);
     /*probably need to change by theme */
     transition: background-image 250ms linear;
   }
@@ -1995,7 +2026,7 @@ html {
   #hero-slider .arrows button:hover {
     color: black;
     /*change for theming*/
-    background-color: #eee;
+    background-color: var(--bodyBgColor);
     /*change for theming*/
   }
   #hero-slider .arrows button svg {
@@ -2060,7 +2091,7 @@ html {
     position: absolute;
     width: 100%;
     inset: 0;
-    background: linear-gradient(to top, #fff 5%, transparent);
+    background: linear-gradient(to top, var(--bodyBgColor) 5%, transparent);
   }
 }
 @media only screen and (max-width: 26.5rem) {
@@ -2088,7 +2119,7 @@ html {
     font-size: 1.5rem;
   }
   #hero-slider .list .item:after {
-    background-image: linear-gradient(to top, #fff 30%, transparent);
+    background-image: linear-gradient(to top, var(--bodyBgColor) 30%, transparent);
     /*probably need to change by theme */
   }
   #hero-slider ul.thumbnail {
@@ -2171,7 +2202,7 @@ html {
     max-width: 310px;
   }
   #hero-slider .list .item:after {
-    background-image: linear-gradient(to top, #fff 5%, transparent);
+    background-image: linear-gradient(to top, var(--bodyBgColor) 5%, transparent);
   }
   #hero-slider .list .item .content {
     top: 20%;

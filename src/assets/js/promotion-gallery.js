@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
    const gallery = document.getElementById("promotion-gallery");
    if (!gallery) return;
 
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
    promoImages.forEach(img => {
       const measuringImg = new Image();
       measuringImg.src = img.src;
-      measuringImg.onload = function () {
+      measuringImg.onload = function() {
          const width = measuringImg.naturalWidth;
          const height = measuringImg.naturalHeight;
          const layout = width > height ? "landscape" : "portrait";
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             parentItem.setAttribute("data-layout", layout);
          }
       };
-      measuringImg.onerror = function () {
+      measuringImg.onerror = function() {
          console.error(`Failed to load image: ${img.src}`);
       };
    });

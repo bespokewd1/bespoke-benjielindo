@@ -103,6 +103,8 @@
     --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 
     --bodyFontFamily: Poppins, Helvetica, sans-serif;
+    // --bodyBgColor: #f9f9f9;
+    --bodyBgColor: #f8fafc;
 
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
@@ -117,6 +119,7 @@
     font-family: var(--bodyFontFamily);
     margin: 0;
     padding: 0;
+    background-color: var(--bodyBgColor);
   }
 
   *,
@@ -1972,7 +1975,6 @@ html {
 /*-- -------------------------- -->
 <---         Promotions         -->
 <--- -------------------------- -*/
-
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
   #gallery-380 {
@@ -1982,7 +1984,7 @@ html {
       width: 100%;
       max-width: (1200/16rem);
       margin: auto;
-      display: flex;
+      display: flex; /* Keep flex for overall container alignment */
       flex-direction: column;
       align-items: center;
       /* 48px - 64px */
@@ -2003,36 +2005,45 @@ html {
       width: 100%;
       padding: 0;
       margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      /* 16px - 20px */
+      display: grid; /* Change to CSS Grid */
+      grid-auto-flow: dense;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 350/16rem), 1fr)
+      ); /* Responsive columns, min width based on your .cs-item max-width */
+      justify-content: center; /* Center the grid items horizontally */
       gap: clamp(1rem, 1.5vw, 1.25rem);
-    }
-
-    .cs-item[data-layout="landscape"] {
-      flex: 1;
     }
 
     .cs-item {
       list-style: none;
-      height: 100%;
-      width: 100%;
-      max-width: 350/16rem;
+      height: auto; /* Let height be determined by content */
+      width: 100%; /* Take full width of grid cell */
       position: relative;
+      border-radius: (8/16rem);
+      padding: 0.8rem;
+      border: 1px solid var(--headerColor);
+      box-shadow:
+        12px 12px 12px rgba(0, 0, 0, 0.1),
+        -10px -10px 10px white;
+      transition: box-shadow 200ms ease();
+    }
+
+    .cs-item[data-layout="landscape"] {
+      grid-column: span 2; /* Make landscape items span 2 columns */
     }
 
     .cs-image {
-      border-radius: 20/16rem;
+      border-radius: (8/16rem);
       width: 100%;
       /* clips the image corners */
       overflow: hidden;
-      aspect-ratio: 328/300;
+      aspect-ratio: 1 / 1; /* Default to square aspect ratio, adjust if needed */
       display: block;
       position: relative;
 
       img {
+        border-radius: (8/16rem);
         position: absolute;
         top: 0;
         left: 0;
@@ -2093,12 +2104,27 @@ html {
 @media only screen and (min-width: 48rem) {
   #gallery-380 {
     .cs-gallery {
-      flex-direction: row;
-      flex-wrap: wrap;
+      grid-template-columns: repeat(
+        3,
+        1fr
+      ); /* Fixed 3 columns on tablet and above */
+    }
+
+    .cs-item:nth-last-child(2)[data-layout="landscape"]:has(
+        + .cs-item[data-layout="landscape"]
+      ),
+    .cs-item:nth-last-child(2)[data-layout="landscape"]
+      + .cs-item:last-child[data-layout="landscape"] {
+      grid-column: 1 / -1;
+    }
+
+    /* Style for trailing landscape items to span full width */
+    .cs-item-fullwidth-trailing-landscape {
+      grid-column: 1 / -1;
     }
 
     .cs-item {
-      width: 48.5%;
+      width: auto; /* No fixed width on tablet and above, grid controls width */
       &:hover {
         .cs-hover-box {
           opacity: 1;
@@ -2151,14 +2177,13 @@ html {
 @media only screen and (min-width: 64rem) {
   #gallery-380 {
     .cs-item {
-      width: 26%;
-      max-width: 305/16rem;
+      max-width: none; /* Remove max-width, grid controls width */
     }
 
     .cs-image {
       /* 300px - 400px */
       height: clamp(18.75rem, 30vw, 25rem);
-      aspect-ratio: 1;
+      aspect-ratio: 1; /* Keep aspect ratio 1:1 or adjust if needed */
     }
   }
 }
@@ -2170,6 +2195,13 @@ html {
       .cs-topper {
         color: var(--primaryLight);
       }
+
+      .cs-item {
+        box-shadow:
+          12px 12px 12px #0206174d,
+          -10px -10px 10px rgba(0, 0, 0, 0.3);
+      }
+
       .cs-title,
       .cs-text {
         color: var(--bodyTextColorWhite);
@@ -2274,7 +2306,7 @@ html {
           bottom: 0;
           background-image: linear-gradient(
             to top,
-            #fff 10%,
+            var(--bodyBgColor) 10%,
             transparent
           ); /*probably need to change by theme */
           transition: background-image 250ms linear;
@@ -2335,7 +2367,7 @@ html {
 
         &:hover {
           color: black; /*change for theming*/
-          background-color: #eee; /*change for theming*/
+          background-color: var(--bodyBgColor); /*change for theming*/
         }
         svg {
           margin-top: 3px;
@@ -2408,7 +2440,11 @@ html {
           width: 100%;
           inset: 0;
           // background-color: rgba(0, 0, 0, 0.5);
-          background: linear-gradient(to top, #fff 5%, transparent);
+          background: linear-gradient(
+            to top,
+            var(--bodyBgColor) 5%,
+            transparent
+          );
         }
       }
     }
@@ -2460,7 +2496,7 @@ html {
         &:after {
           background-image: linear-gradient(
             to top,
-            #fff 30%,
+            var(--bodyBgColor) 30%,
             transparent
           ); /*probably need to change by theme */
         }
@@ -2589,7 +2625,11 @@ html {
     .list {
       .item {
         &:after {
-          background-image: linear-gradient(to top, #fff 5%, transparent;);
+          background-image: linear-gradient(
+            to top,
+            var(--bodyBgColor) 5%,
+            transparent;
+          );
         }
         .content {
           top: 20%;
