@@ -1732,7 +1732,7 @@ html {
     display: grid;
     /* Change to CSS Grid */
     grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
     /* Responsive columns, min width based on your .cs-item max-width */
     justify-content: center;
     /* Center the grid items horizontally */
@@ -1751,10 +1751,6 @@ html {
     box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
     transition: box-shadow 200ms ease();
   }
-  #gallery-380 .cs-item[data-layout="landscape"] {
-    grid-column: span 2;
-    /* Make landscape items span 2 columns */
-  }
   #gallery-380 .cs-image {
     border-radius: 0.5rem;
     width: 100%;
@@ -1764,6 +1760,7 @@ html {
     /* Default to square aspect ratio, adjust if needed */
     display: block;
     position: relative;
+    height: clamp(18.75rem, 30vw, 25rem);
   }
   #gallery-380 .cs-image img {
     border-radius: 0.5rem;
@@ -1817,21 +1814,9 @@ html {
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
-  #gallery-380 {
-    /* Style for trailing landscape items to span full width */
-  }
   #gallery-380 .cs-gallery {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     /* Fixed 3 columns on tablet and above */
-  }
-  #gallery-380 .cs-item:nth-last-child(2)[data-layout="landscape"]:has(
-        + .cs-item[data-layout="landscape"]
-      ),
-  #gallery-380 .cs-item:nth-last-child(2)[data-layout="landscape"] + .cs-item:last-child[data-layout="landscape"] {
-    grid-column: 1 / -1;
-  }
-  #gallery-380 .cs-item-fullwidth-trailing-landscape {
-    grid-column: 1 / -1;
   }
   #gallery-380 .cs-item {
     width: auto;
@@ -1875,6 +1860,25 @@ html {
 }
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
+  #gallery-380 {
+    /* Style for trailing landscape items to span full width */
+  }
+  #gallery-380 .cs-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  #gallery-380 .cs-item[data-layout="landscape"] {
+    /* Make landscape items span 2 columns */
+    grid-column: span 2;
+  }
+  #gallery-380 .cs-item:nth-last-child(2)[data-layout="landscape"]:has(
+        + .cs-item[data-layout="landscape"]
+      ),
+  #gallery-380 .cs-item:nth-last-child(2)[data-layout="landscape"] + .cs-item:last-child[data-layout="landscape"] {
+    grid-column: 1 / -1;
+  }
+  #gallery-380 .cs-item-fullwidth-trailing-landscape {
+    grid-column: 1 / -1;
+  }
   #gallery-380 .cs-item {
     max-width: none;
     /* Remove max-width, grid controls width */
