@@ -1746,7 +1746,6 @@ html {
     /* Take full width of grid cell */
     position: relative;
     border-radius: 0.5rem;
-    padding: 0.8rem;
     border: 1px solid var(--headerColor);
     box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px white;
     transition: box-shadow 200ms ease();
@@ -1764,12 +1763,10 @@ html {
   }
   #gallery-380 .cs-image img {
     border-radius: 0.5rem;
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    padding: 0.5rem;
   }
   #gallery-380 .cs-hover-box {
     padding: 16/16rem;
@@ -1864,6 +1861,7 @@ html {
     /* Style for trailing landscape items to span full width */
   }
   #gallery-380 .cs-gallery {
+    padding: 0 2rem;
     grid-template-columns: repeat(3, 1fr);
   }
   #gallery-380 .cs-item[data-layout="landscape"] {
@@ -1888,6 +1886,7 @@ html {
     height: clamp(18.75rem, 30vw, 25rem);
     aspect-ratio: 1;
     /* Keep aspect ratio 1:1 or adjust if needed */
+    padding: 0.6rem;
   }
 }
 /* Dark Mode */

@@ -2021,7 +2021,6 @@ html {
       width: 100%; /* Take full width of grid cell */
       position: relative;
       border-radius: (8/16rem);
-      padding: 0.8rem;
       border: 1px solid var(--headerColor);
       box-shadow:
         12px 12px 12px rgba(0, 0, 0, 0.1),
@@ -2041,12 +2040,13 @@ html {
 
       img {
         border-radius: (8/16rem);
-        position: absolute;
-        top: 0;
-        left: 0;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
         height: 100%;
         width: 100%;
         object-fit: cover;
+        padding: 0.5rem;
       }
     }
 
@@ -2161,6 +2161,7 @@ html {
 @media only screen and (min-width: 64rem) {
   #gallery-380 {
     .cs-gallery {
+      padding: 0 2rem;
       grid-template-columns: repeat(3, 1fr);
     }
 
@@ -2184,11 +2185,11 @@ html {
     .cs-item {
       max-width: none; /* Remove max-width, grid controls width */
     }
-
     .cs-image {
       /* 300px - 400px */
       height: clamp(18.75rem, 30vw, 25rem);
       aspect-ratio: 1; /* Keep aspect ratio 1:1 or adjust if needed */
+      padding: 0.6rem;
     }
   }
 }
