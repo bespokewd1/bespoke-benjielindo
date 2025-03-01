@@ -1,7 +1,10 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+
    // Cache elements
    const heroSliderSection = document.getElementById("hero-slider");
-   const thumbnailsElement = heroSliderSection.querySelector(".thumbnail"); // Select the thumbnail UL
+   const thumbnailsElement = heroSliderSection.querySelector(".thumbnail");
+   const arrowsElement = heroSliderSection.querySelector(".arrows");
+   const contentElements = heroSliderSection.querySelectorAll(".content"); // Select all .content elements
    const items = heroSliderSection.querySelectorAll(".slider .list .item");
    const nextButton = heroSliderSection.querySelector("#next");
    const prevButton = heroSliderSection.querySelector("#prev");
@@ -52,14 +55,14 @@ document.addEventListener("DOMContentLoaded", function() {
    nextButton.setAttribute('tabindex', '0');
    prevButton.setAttribute('tabindex', '0');
 
-   nextButton.addEventListener('keydown', function(event) {
+   nextButton.addEventListener('keydown', function (event) {
       if (event.key === 'Enter' || event.key === ' ') {
          event.preventDefault();
          showNextSlide();
       }
    });
 
-   prevButton.addEventListener('keydown', function(event) {
+   prevButton.addEventListener('keydown', function (event) {
       if (event.key === 'Enter' || event.key === ' ') {
          event.preventDefault();
          showPrevSlide();
@@ -117,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
          resetAutoSlide();
       });
 
-      thumbnail.addEventListener('keydown', function(event) {
+      thumbnail.addEventListener('keydown', function (event) {
          if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             itemActive = index;
@@ -128,17 +131,35 @@ document.addEventListener("DOMContentLoaded", function() {
    });
 
    // -------------------------------------------------------
-   // Pause Auto-slide on Hover
+   // Refined Pause Auto-slide on Hover (Content, Thumbnail, Arrows)
    // -------------------------------------------------------
-   heroSliderSection.addEventListener('mouseenter', () => {
+   const pauseAutoSlide = () => {
       clearInterval(refreshInterval);
       isAutoSliding = false;
-   });
+   };
 
-   heroSliderSection.addEventListener('mouseleave', () => {
+   const resumeAutoSlide = () => {
       startAutoSlide();
       isAutoSliding = true;
+   };
+
+
+   // Attach hover listeners to .content elements
+   contentElements.forEach(content => {
+      content.addEventListener('mouseenter', pauseAutoSlide);
+      content.addEventListener('mouseleave', resumeAutoSlide);
    });
+
+   // Attach hover listeners to .thumbnail element
+   thumbnailsElement.addEventListener('mouseenter', pauseAutoSlide);
+   thumbnailsElement.addEventListener('mouseleave', resumeAutoSlide);
+
+   // Attach hover listeners to .arrows element
+   arrowsElement.addEventListener('mouseenter', pauseAutoSlide);
+   arrowsElement.addEventListener('mouseleave', resumeAutoSlide);
+
+
+
 
    // -------------------------------------------------------
    // Basic Touch/Swipe Support (Mobile)
@@ -165,9 +186,9 @@ document.addEventListener("DOMContentLoaded", function() {
    }
 
    // -------------------------------------------------------
-   // "into-view" class logic based on scroll
+   // "into-view" class logic based on scroll (No changes needed here)
    // -------------------------------------------------------
-   let lastScrollY = window.scrollY; // Track previous scroll position
+   let lastScrollY = window.scrollY;
 
    window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
@@ -175,12 +196,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const viewportMiddle = window.innerHeight / 2;
       const isScrollingDown = currentScrollY > lastScrollY;
 
-      if (isScrollingDown && (heroSliderBottom - 200) <= viewportMiddle) {
-         thumbnailsElement.classList.add('into-view'); // Add class when scrolling down and bottom reaches middle
+      if (isScrollingDown && heroSliderBottom <= viewportMiddle) {
+         thumbnailsElement.classList.add('into-view');
       } else if (!isScrollingDown && heroSliderBottom > viewportMiddle) {
-         thumbnailsElement.classList.remove('into-view'); // Remove class when scrolling up and bottom goes above middle
+         thumbnailsElement.classList.remove('into-view');
       }
-      lastScrollY = currentScrollY; // Update previous scroll position
+      lastScrollY = currentScrollY;
    });
 
 
