@@ -1,131 +1,177 @@
+document.addEventListener("DOMContentLoaded", function() {
 
-document.addEventListener("DOMContentLoaded", function () {
-   const items = document.querySelectorAll(".slider .list .item");
-   const next = document.getElementById("next");
-   const prev = document.getElementById("prev");
-   const thumbnails = document.querySelectorAll(".thumbnail .item");
+   // Cache the hero slider section.
    const heroSliderSection = document.getElementById("hero-slider");
 
-   // config parameters
+   // Scope all queries to heroSliderSection.
+   const items = heroSliderSection.querySelectorAll(".slider .list .item");
+   const nextButton = heroSliderSection.querySelector("#next");
+   const prevButton = heroSliderSection.querySelector("#prev");
+   const thumbnails = heroSliderSection.querySelectorAll(".thumbnail .item");
+   const thumbnailContainer = heroSliderSection.querySelector(".thumbnail");
+
+   // Configuration parameters.
    const countItem = items.length;
    let itemActive = 0;
    let refreshInterval;
    let isAutoSliding = false;
 
+   // -------------------------------------------------------
+   // Auto-slide functions.
+   // -------------------------------------------------------
    function startAutoSlide() {
       if (!isAutoSliding) {
          isAutoSliding = true;
-         refreshInterval = setInterval(() => {
-            next.click();
-         }, 3000);
-         console.log("Auto-slide started");
-      }
-   }
-
-   function stopAutoSlide() {
-      if (isAutoSliding) {
-         isAutoSliding = false;
-         clearInterval(refreshInterval);
-         console.log("Auto-slide stopped");
+         refreshInterval = setInterval(() => nextButton.click(), 3000);
       }
    }
 
    function resetAutoSlide() {
-      stopAutoSlide();
+      clearInterval(refreshInterval);
+      isAutoSliding = false;
       startAutoSlide();
    }
 
-   next.onclick = function () {
-      itemActive = itemActive + 1;
-      if (itemActive >= countItem) {
-         itemActive = 0;
-      }
+   // -------------------------------------------------------
+   // Next/prev event listeners and Keyboard Navigation
+   // -------------------------------------------------------
+   nextButton.addEventListener("click", showNextSlide);
+   prevButton.addEventListener("click", showPrevSlide);
+
+   function showNextSlide() {
+      itemActive = (itemActive + 1) % countItem;
       showSlider();
       resetAutoSlide();
-   };
+   }
 
-   prev.onclick = function () {
-      itemActive = itemActive - 1;
-      if (itemActive < 0) {
-         itemActive = countItem - 1;
-      }
+   function showPrevSlide() {
+      itemActive = (itemActive - 1 + countItem) % countItem;
       showSlider();
       resetAutoSlide();
-   };
+   }
 
+   // Keyboard navigation for arrow buttons (using tabIndex and keydown)
+   nextButton.setAttribute('tabindex', '0');
+   prevButton.setAttribute('tabindex', '0');
+
+   nextButton.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+         event.preventDefault();
+         showNextSlide();
+      }
+   });
+
+   prevButton.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+         event.preventDefault();
+         showPrevSlide();
+      }
+   });
+
+
+   // -------------------------------------------------------
+   // Update the active slider item and active thumbnail.
+   // -------------------------------------------------------
    function showSlider() {
-      // Remove the active class from the previously active slider item and thumbnail
-      const itemActiveOld = document.querySelector(".slider .list .item.active");
-      const thumbnailActiveOld = document.querySelector(
+      const activeSliderItem = heroSliderSection.querySelector(
+         ".slider .list .item.active"
+      );
+      const activeThumbnail = heroSliderSection.querySelector(
          ".thumbnail .item.active"
       );
 
-      if (itemActiveOld) {
-         itemActiveOld.classList.remove("active");
-      }
-      if (thumbnailActiveOld) {
-         thumbnailActiveOld.classList.remove("active");
+      if (activeSliderItem) activeSliderItem.classList.remove("active");
+      if (activeThumbnail) {
+         activeThumbnail.classList.remove("active");
+         activeThumbnail.setAttribute("aria-selected", "false"); // ARIA update
       }
 
-      // Add active class to the current slider item and its corresponding thumbnail
       items[itemActive].classList.add("active");
       thumbnails[itemActive].classList.add("active");
+      thumbnails[itemActive].setAttribute("aria-selected", "true"); // ARIA update
 
-      // Adjust the thumbnail container horizontally so that the active thumbnail 
-      // is fully visible without affecting vertical scrolling
-      const thumbnailContainer = document.querySelector(".thumbnail");
-      const activeThumbnail = thumbnails[itemActive];
 
-      if (thumbnailContainer && activeThumbnail) {
-         const containerRect = thumbnailContainer.getBoundingClientRect();
-         const thumbRect = activeThumbnail.getBoundingClientRect();
+      // Manually control the horizontal scroll of thumbnailContainer.
+      const containerRect = thumbnailContainer.getBoundingClientRect();
+      const thumbRect = thumbnails[itemActive].getBoundingClientRect();
 
-         // If the thumbnail is partially off-screen on the left:
-         if (thumbRect.left < containerRect.left) {
-            thumbnailContainer.scrollBy({
-               left: thumbRect.left - containerRect.left,
-               behavior: "smooth"
-            });
-         }
-         // If the thumbnail is partially off-screen on the right:
-         else if (thumbRect.right > containerRect.right) {
-            thumbnailContainer.scrollBy({
-               left: thumbRect.right - containerRect.right,
-               behavior: "smooth"
-            });
-         }
+      if (thumbRect.left < containerRect.left) {
+         thumbnailContainer.scrollBy({
+            left: thumbRect.left - containerRect.left,
+            behavior: "smooth",
+         });
+      } else if (thumbRect.right > containerRect.right) {
+         thumbnailContainer.scrollBy({
+            left: thumbRect.right - containerRect.right,
+            behavior: "smooth",
+         });
       }
    }
 
-   // Clicking on a thumbnail switches the slider to the corresponding item.
+   // -------------------------------------------------------
+   // Clicking on a thumbnail jumps to that slider item and Keyboard Navigation
+   // -------------------------------------------------------
    thumbnails.forEach((thumbnail, index) => {
+      thumbnail.setAttribute('tabindex', '0'); // Make thumbnails focusable
+
       thumbnail.addEventListener("click", () => {
          itemActive = index;
          showSlider();
          resetAutoSlide();
       });
-   });
 
-   // Observer to start/stop auto sliding based on the slider's visibility
-   const observerOptions = {
-      root: null,
-      threshold: 0.2
-   };
-
-   const heroSectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-         if (entry.isIntersecting) {
-            startAutoSlide();
-         } else {
-            stopAutoSlide();
+      thumbnail.addEventListener('keydown', function(event) {
+         if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            itemActive = index;
+            showSlider();
+            resetAutoSlide();
          }
       });
-   }, observerOptions);
+   });
 
-   heroSectionObserver.observe(heroSliderSection);
+   // -------------------------------------------------------
+   // Pause Auto-slide on Hover
+   // -------------------------------------------------------
+   heroSliderSection.addEventListener('mouseenter', () => {
+      clearInterval(refreshInterval);
+      isAutoSliding = false;
+   });
 
-   // Start auto sliding if the slider is initially in the viewport
-   if (heroSliderSection.getBoundingClientRect().top < window.innerHeight) {
+   heroSliderSection.addEventListener('mouseleave', () => {
       startAutoSlide();
+      isAutoSliding = true; // Ensure isAutoSliding is set back to true on mouseleave
+   });
+
+
+   // -------------------------------------------------------
+   // Basic Touch/Swipe Support (Mobile)
+   // -------------------------------------------------------
+   let touchStartX = 0;
+   let touchEndX = 0;
+
+   heroSliderSection.addEventListener('touchstart', (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+   }, false);
+
+   heroSliderSection.addEventListener('touchend', (event) => {
+      touchEndX = event.changedTouches[0].screenX;
+      handleSwipe();
+   }, false);
+
+   function handleSwipe() {
+      const swipeThreshold = 50;
+      if (touchEndX + swipeThreshold < touchStartX) {
+         showNextSlide();
+      } else if (touchEndX - swipeThreshold > touchStartX) {
+         showPrevSlide();
+      }
    }
+
+
+   // -------------------------------------------------------
+   // Start the auto sliding on initial load
+   // -------------------------------------------------------
+   startAutoSlide();
+
 });
