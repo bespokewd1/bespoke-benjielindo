@@ -26,6 +26,7 @@ eleventyNavigation:
         pswpModule: () => import('/assets/js/photoswipe.esm.js')
         });
         lightbox.init();
+
     </script>
 {% endblock %}
 
@@ -40,27 +41,27 @@ eleventyNavigation:
     <!--                    Hero                      -->
     <!-- ============================================ -->
 
-      <section id="hero-slider" class="slider" >
+            <section id="hero-slider" class="slider" >
 
-                <picture class="hero-picture">
-                        <source
-                        media="(max-width: 600px)"
-                        srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
-                        />
-                        <source
-                        media="(min-width: 601px)"
-                        srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
-                        />
-                        <img
-                        aria-hidden="true"
-                        decoding="async"
-                        src="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
-                        alt="benjie-lindo"
-                        width="468"
-                        height="658"
-                        class="hero-image"
-                        />
-                    </picture>
+               <picture class="hero-picture">
+                     <source
+                     media="(max-width: 600px)"
+                     srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
+                     />
+                     <source
+                     media="(min-width: 601px)"
+                     srcset="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
+                     />
+                     <img
+                     aria-hidden="true"
+                     decoding="async"
+                     src="{{ client.domain }}/assets/images/benjie-lindo-header-transparent.webp"
+                     alt="benjie-lindo"
+                     width="468"
+                     height="658"
+                     class="hero-image"
+                     />
+               </picture>
 
         <ul class="list">
             <li class="item active">
@@ -95,7 +96,7 @@ eleventyNavigation:
                     <source media="(max-width: 1023px)" srcset="/assets/images/hero-2.webp">
                     <!--Tablet and above Image-->
                     <source media="(min-width: 1024px)" srcset="/assets/images/hero-2.webp">
-                    <img class="img" loading="lazy" decoding="async" src="/assets/images/hero-2.webp" alt="buildings" width="1280" height="568">
+                    <img class="img" loading="lazy" decoding="async" src="/assets/images/hero-2.webp" style="filter:brightness(0.5)" alt="buildings" width="1280" height="568">
                 </picture>
 
                 <div class="content">
@@ -133,7 +134,7 @@ eleventyNavigation:
                     <source media="(max-width: 1023px)" srcset="/assets/images/hero-4.webp">
                     <!--Tablet and above Image-->
                     <source media="(min-width: 1024px)" srcset="/assets/images/hero-4.webp">
-                    <img class="img" loading="lazy" decoding="async" src="/assets/images/hero-4.webp" alt="buildings" width="1280" height="568">
+                    <img class="img" loading="lazy" decoding="async" src="/assets/images/hero-4.webp"  style="filter:brightness(0.2)" alt="buildings" width="1280" height="568">
                 </picture>
 
                 <div class="content">

@@ -107,12 +107,12 @@
     --bodyBgColor: #f8fafc;
 
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-      0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-sm:
+      0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   }
 
   body {
@@ -2585,7 +2585,7 @@ html {
 /*desktop */
 @media only screen and (min-width: 769px) {
   #hero-slider {
-    min-height: 1080px;
+    min-height: (1080/16rem);
 
     > .hero-picture {
       left: 40%;
@@ -2617,7 +2617,7 @@ html {
 
 @media only screen and (min-width: 64rem) {
   #hero-slider {
-    min-height: 100dvh;
+    // min-height: (1440/16rem);
 
     > .hero-picture {
       left: 30%;
