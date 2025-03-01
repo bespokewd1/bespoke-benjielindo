@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-
-   // Cache the hero slider section.
+   // Cache elements
    const heroSliderSection = document.getElementById("hero-slider");
-
-   // Scope all queries to heroSliderSection.
+   const thumbnailsElement = heroSliderSection.querySelector(".thumbnail"); // Select the thumbnail UL
    const items = heroSliderSection.querySelectorAll(".slider .list .item");
    const nextButton = heroSliderSection.querySelector("#next");
    const prevButton = heroSliderSection.querySelector("#prev");
@@ -83,13 +81,12 @@ document.addEventListener("DOMContentLoaded", function() {
       if (activeSliderItem) activeSliderItem.classList.remove("active");
       if (activeThumbnail) {
          activeThumbnail.classList.remove("active");
-         activeThumbnail.setAttribute("aria-selected", "false"); // ARIA update
+         activeThumbnail.setAttribute("aria-selected", "false");
       }
 
       items[itemActive].classList.add("active");
       thumbnails[itemActive].classList.add("active");
-      thumbnails[itemActive].setAttribute("aria-selected", "true"); // ARIA update
-
+      thumbnails[itemActive].setAttribute("aria-selected", "true");
 
       // Manually control the horizontal scroll of thumbnailContainer.
       const containerRect = thumbnailContainer.getBoundingClientRect();
@@ -112,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
    // Clicking on a thumbnail jumps to that slider item and Keyboard Navigation
    // -------------------------------------------------------
    thumbnails.forEach((thumbnail, index) => {
-      thumbnail.setAttribute('tabindex', '0'); // Make thumbnails focusable
+      thumbnail.setAttribute('tabindex', '0');
 
       thumbnail.addEventListener("click", () => {
          itemActive = index;
@@ -140,9 +137,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
    heroSliderSection.addEventListener('mouseleave', () => {
       startAutoSlide();
-      isAutoSliding = true; // Ensure isAutoSliding is set back to true on mouseleave
+      isAutoSliding = true;
    });
-
 
    // -------------------------------------------------------
    // Basic Touch/Swipe Support (Mobile)
@@ -168,10 +164,28 @@ document.addEventListener("DOMContentLoaded", function() {
       }
    }
 
+   // -------------------------------------------------------
+   // "into-view" class logic based on scroll
+   // -------------------------------------------------------
+   let lastScrollY = window.scrollY; // Track previous scroll position
+
+   window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const heroSliderBottom = heroSliderSection.getBoundingClientRect().bottom;
+      const viewportMiddle = window.innerHeight / 2;
+      const isScrollingDown = currentScrollY > lastScrollY;
+
+      if (isScrollingDown && (heroSliderBottom - 200) <= viewportMiddle) {
+         thumbnailsElement.classList.add('into-view'); // Add class when scrolling down and bottom reaches middle
+      } else if (!isScrollingDown && heroSliderBottom > viewportMiddle) {
+         thumbnailsElement.classList.remove('into-view'); // Remove class when scrolling up and bottom goes above middle
+      }
+      lastScrollY = currentScrollY; // Update previous scroll position
+   });
+
 
    // -------------------------------------------------------
    // Start the auto sliding on initial load
    // -------------------------------------------------------
    startAutoSlide();
-
 });
