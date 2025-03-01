@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
    // Cache elements
    const heroSliderSection = document.getElementById("hero-slider");
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
    function startAutoSlide() {
       if (!isAutoSliding) {
          isAutoSliding = true;
-         refreshInterval = setInterval(() => nextButton.click(), 3000);
+         refreshInterval = setInterval(() => nextButton.click(), 5000);
       }
    }
 
@@ -55,14 +55,14 @@ document.addEventListener("DOMContentLoaded", function () {
    nextButton.setAttribute('tabindex', '0');
    prevButton.setAttribute('tabindex', '0');
 
-   nextButton.addEventListener('keydown', function (event) {
+   nextButton.addEventListener('keydown', function(event) {
       if (event.key === 'Enter' || event.key === ' ') {
          event.preventDefault();
          showNextSlide();
       }
    });
 
-   prevButton.addEventListener('keydown', function (event) {
+   prevButton.addEventListener('keydown', function(event) {
       if (event.key === 'Enter' || event.key === ' ') {
          event.preventDefault();
          showPrevSlide();
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
          resetAutoSlide();
       });
 
-      thumbnail.addEventListener('keydown', function (event) {
+      thumbnail.addEventListener('keydown', function(event) {
          if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             itemActive = index;
