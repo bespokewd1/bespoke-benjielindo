@@ -1981,7 +1981,7 @@ html {
     position: absolute;
     left: 0;
     bottom: 0;
-    background-image: linear-gradient(to top, var(--bodyBgColor) 10%, transparent);
+    background-image: linear-gradient(to top, var(--bodyBgColor) 5%, transparent);
     /*probably need to change by theme */
     transition: background-image 250ms linear;
   }
@@ -2119,7 +2119,7 @@ html {
     font-size: 1.5rem;
   }
   #hero-slider .list .item:after {
-    background-image: linear-gradient(to top, var(--bodyBgColor) 30%, transparent);
+    background-image: linear-gradient(to top, var(--bodyBgColor) 10%, transparent);
     /*probably need to change by theme */
   }
   #hero-slider ul.thumbnail {
