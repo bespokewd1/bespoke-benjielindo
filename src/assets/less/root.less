@@ -107,12 +107,12 @@
     --bodyBgColor: #f8fafc;
 
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-sm:
-      0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    --shadow-md:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    --shadow-lg:
-      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -4px rgba(0, 0, 0, 0.1);
   }
 
   body {
@@ -2233,21 +2233,31 @@ html {
 
 @media only screen and (min-width: 0rem) {
   #hero-slider {
+    display: grid;
+    grid-template-areas: "img arrows" "content content" "thumbnail thumbnail";
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     padding: 0;
     // margin-top: height of the header
     position: relative;
     min-height: (900/16rem);
 
     > .hero-picture {
-      position: absolute;
+      grid-area: img;
+      //position: absolute;
+      place-self: end;
       z-index: 100;
       background-color: transparent;
       .hero-image {
+        width: 100% !important;
+        height: auto;
+        max-width: 180px;
         object-fit: contain;
       }
     }
 
     .list {
+      grid-area: content;
       margin: 0;
       padding: 0;
       .item {
@@ -2293,7 +2303,9 @@ html {
           }
 
           .cs-title {
-            font-size: (100/16rem);
+            //font-size: (100/16rem);
+
+            font-size: var(--headerFontSize);
             margin: 0;
           }
 
@@ -2347,8 +2359,11 @@ html {
     }
 
     .arrows {
-      position: absolute;
-      top: 30%;
+      grid-area: arrows;
+      align-self: end;
+      justify-self: center;
+      //position: absolute;
+      //top: 30%;
       right: 50px;
       z-index: 100;
 
@@ -2383,6 +2398,7 @@ html {
     }
 
     .thumbnail {
+      grid-area: thumbnail;
       margin: 0;
       position: absolute;
       bottom: (35/16rem);
@@ -2472,15 +2488,6 @@ html {
 
 @media only screen and (max-width: 37.5rem) {
   #hero-slider {
-    > .hero-picture {
-      top: 13%;
-
-      > .hero-image {
-        width: clamp(170px, 45vw, 250px);
-        height: 100%;
-      }
-    }
-
     .list {
       .item {
         div.content {
@@ -2490,6 +2497,7 @@ html {
           top: 40%;
           transform: translateX(-50%);
           max-width: 95%;
+          padding: 0 1rem;
 
           .cs-topper {
             // display: none;
@@ -2532,41 +2540,20 @@ html {
   }
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (max-width: 48rem) {
   #hero-slider {
-    > .hero-picture {
-      top: 45%;
-      transform: translateY(-50%);
-    }
     .list {
       .item {
         .content {
-          right: 10%;
-          top: 25%;
+          //max-width: 50%;
+          top: 40%;
+          right: 20%;
+          left: unset;
+          font-size: (60/16rem);
+
           .cs-title {
             font-size: var(--headerFontSize);
           }
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 48rem) {
-  #hero-slider {
-    > .hero-picture {
-      > .hero-image {
-        // width: 200px;
-        width: 40%;
-        // width: clamp(170px, 45vw, 250px);
-        // height: 100%;
-      }
-    }
-    .list {
-      .item {
-        .content {
-          max-width: 50%;
-          font-size: (60/16rem);
         }
       }
     }
@@ -2586,20 +2573,22 @@ html {
 /*desktop */
 @media only screen and (min-width: 769px) {
   #hero-slider {
-    min-height: (1080 / 16rem);
+    grid-template-areas: "img arrows" "img content" "thumbnail thumbnail";
 
     > .hero-picture {
-      left: 40%;
-      transform: translate(-50%, -50%);
+      place-self: center;
+      margin-top: 4rem;
       > .hero-image {
-        width: 45%;
+        //width: 45%;
+        max-width: 250px;
       }
     }
 
     .list {
       .item {
         .content {
-          top: 30%;
+          top: 25%;
+          width: 50%;
           right: 1.5rem;
           gap: 1.5rem;
         }
@@ -2607,7 +2596,7 @@ html {
     }
 
     .arrows {
-      top: 20%;
+      align-self: center;
     }
 
     .thumbnail {
@@ -2618,9 +2607,10 @@ html {
 
 @media only screen and (min-width: 64rem) {
   #hero-slider {
+    min-height: (1080 / 16rem);
     > .hero-picture {
-      left: 30%;
-      transform: translate(-70%, -50%);
+      //left: 30%;
+      //transform: translate(-70%, -50%);
       > .hero-image {
         width: 100%;
         max-width: 310px;
@@ -2637,8 +2627,8 @@ html {
           );
         }
         .content {
-          top: 20%;
-          right: 35%;
+          top: 25%;
+          right: 33%;
           gap: 1.5rem;
           transform: translateX(50%);
         }

@@ -121,9 +121,12 @@
     --bodyFontFamily: Poppins, Helvetica, sans-serif;
     --bodyBgColor: #f8fafc;
     --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -4px rgba(0, 0, 0, 0.1);
   }
   body {
     font-family: var(--bodyFontFamily);
@@ -1914,19 +1917,28 @@ html {
 }
 @media only screen and (min-width: 0rem) {
   #hero-slider {
+    display: grid;
+    grid-template-areas: "img arrows" "content content" "thumbnail thumbnail";
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     padding: 0;
     position: relative;
     min-height: 56.25rem;
   }
   #hero-slider > .hero-picture {
-    position: absolute;
+    grid-area: img;
+    place-self: end;
     z-index: 100;
     background-color: transparent;
   }
   #hero-slider > .hero-picture .hero-image {
+    width: 100% !important;
+    height: auto;
+    max-width: 180px;
     object-fit: contain;
   }
   #hero-slider .list {
+    grid-area: content;
     margin: 0;
     padding: 0;
   }
@@ -1967,7 +1979,7 @@ html {
     margin: 0;
   }
   #hero-slider .list .item .content .cs-title {
-    font-size: 6.25rem;
+    font-size: var(--headerFontSize);
     margin: 0;
   }
   #hero-slider .list .item .content .cs-button-solid {
@@ -2004,8 +2016,9 @@ html {
     animation-delay: 1.3s;
   }
   #hero-slider .arrows {
-    position: absolute;
-    top: 30%;
+    grid-area: arrows;
+    align-self: end;
+    justify-self: center;
     right: 50px;
     z-index: 100;
   }
@@ -2034,6 +2047,7 @@ html {
     margin-top: 3px;
   }
   #hero-slider .thumbnail {
+    grid-area: thumbnail;
     margin: 0;
     position: absolute;
     bottom: 2.1875rem;
@@ -2101,13 +2115,6 @@ html {
   }
 }
 @media only screen and (max-width: 37.5rem) {
-  #hero-slider > .hero-picture {
-    top: 13%;
-  }
-  #hero-slider > .hero-picture > .hero-image {
-    width: clamp(170px, 45vw, 250px);
-    height: 100%;
-  }
   #hero-slider .list .item div.content {
     left: 50%;
     right: unset;
@@ -2115,6 +2122,7 @@ html {
     top: 40%;
     transform: translateX(-50%);
     max-width: 95%;
+    padding: 0 1rem;
   }
   #hero-slider .list .item div.content .cs-title {
     font-size: 1.5rem;
@@ -2136,26 +2144,15 @@ html {
     position: relative;
   }
 }
-@media only screen and (min-width: 601px) {
-  #hero-slider > .hero-picture {
-    top: 45%;
-    transform: translateY(-50%);
-  }
+@media only screen and (max-width: 48rem) {
   #hero-slider .list .item .content {
-    right: 10%;
-    top: 25%;
+    top: 40%;
+    right: 20%;
+    left: unset;
+    font-size: 3.75rem;
   }
   #hero-slider .list .item .content .cs-title {
     font-size: var(--headerFontSize);
-  }
-}
-@media only screen and (max-width: 48rem) {
-  #hero-slider > .hero-picture > .hero-image {
-    width: 40%;
-  }
-  #hero-slider .list .item .content {
-    max-width: 50%;
-    font-size: 3.75rem;
   }
   #hero-slider .arrows {
     top: 15%;
@@ -2169,31 +2166,31 @@ html {
 /*desktop */
 @media only screen and (min-width: 769px) {
   #hero-slider {
-    min-height: 67.5rem;
+    grid-template-areas: "img arrows" "img content" "thumbnail thumbnail";
   }
   #hero-slider > .hero-picture {
-    left: 40%;
-    transform: translate(-50%, -50%);
+    place-self: center;
+    margin-top: 4rem;
   }
   #hero-slider > .hero-picture > .hero-image {
-    width: 45%;
+    max-width: 250px;
   }
   #hero-slider .list .item .content {
-    top: 30%;
+    top: 25%;
+    width: 50%;
     right: 1.5rem;
     gap: 1.5rem;
   }
   #hero-slider .arrows {
-    top: 20%;
+    align-self: center;
   }
   #hero-slider .thumbnail {
     gap: 1.5rem;
   }
 }
 @media only screen and (min-width: 64rem) {
-  #hero-slider > .hero-picture {
-    left: 30%;
-    transform: translate(-70%, -50%);
+  #hero-slider {
+    min-height: 67.5rem;
   }
   #hero-slider > .hero-picture > .hero-image {
     width: 100%;
@@ -2203,8 +2200,8 @@ html {
     background-image: linear-gradient(to top, var(--bodyBgColor) 5%, transparent);
   }
   #hero-slider .list .item .content {
-    top: 20%;
-    right: 35%;
+    top: 25%;
+    right: 33%;
     gap: 1.5rem;
     transform: translateX(50%);
   }
