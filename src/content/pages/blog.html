@@ -30,7 +30,7 @@ eleventyNavigation:
     <!--              Main Blog Content               -->
     <!-- ============================================ -->
 
-    <div class="blog-container main-content-wrapper">
+    <div id="three-cards" class="blog-container main-content-wrapper blog-homepage">
         <!--Main content -->
         <div class="main-content">
             <!-- ============================================ -->
@@ -41,40 +41,37 @@ eleventyNavigation:
                 <h1>No Recent Posts</h1>
             {% else %}
                 {%- for post in collections.post | reverse -%}
-                    <article class="recent-articles">
-                        <!--Main Article Image-->
-                        <picture class="blog-mainImage">
-                            <img
+                    <article class="cs-item">
+                        <picture class="cs-picture">
+                        <source media="(max-width: 600px)" srcset="{{ post.data.image }}" />
+                        <source media="(min-width: 601px)" srcset="{{ post.data.image }}" />
+                        <img
+                            loading="lazy"
+                            decoding="async"
                             src="{{ post.data.image }}"
-                            alt="{{ post.data.imageAlt }}"
-                            width="795"
-                            height="400"
-                            decoding="async" />
+                            alt="{{ post.data.title }}"
+                            width="334"
+                            height="380"
+                        />
                         </picture>
-                        <!--Article Info-->
-                        <div class="article-group">
-                            <div class="blog-authorGroup">
-                                <!--Author Image-->
-                                <picture class="blog-author-img">
-                                    <img
-                                    src="https://benjielindolive.ca/assets/images/benjie-lindo-logo-blue.png"
-                                    alt="house"
-                                    width="32"
-                                    height="32"
-                                    decoding="async" />
-                                </picture>
-                                <span class="blog-author">{{ post.data.author }}</span>
-                                <span aria-hidden="true" class="blog-dot"></span>
-                                <!--Blog Date-->
-                                <span class="blog-date">{{ post.date | formatDate }}</span>
-                            </div>
-                            <h2 class="blog-h1">
-                                {{ post.data.title }}
-                            </h2>
-                            <p class="blog-desc">
-                                {{ post.data.description }}
-                            </p>
-                            <a href="{{ post.url }}" class="blog-link">Continue Reading</a>
+                        <div class="cs-info">
+                        <h3 class="cs-h3">{{ post.data.title }}</h3>
+                        <span class="cs-desc">{{ post.data.description }}</span>
+                        <a href="{{ post.url }}" class="cs-button-solid">
+                            Check our blog
+                            <span class="arrow-wrapper">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M18 8L22 12L18 16" />
+                                <path d="M2 12H22" />
+                            </svg>
+                            </span>
+                        </a>
                         </div>
                     </article>
                 {%- endfor -%}

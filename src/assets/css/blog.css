@@ -626,3 +626,33 @@
     display: block;
   }
 }
+/*-- -------------------------------------- -->
+<---  Sidebar overrides for blog homepage   -->
+<--- -------------------------------------- -*/
+@media only screen and (min-width: 48em) {
+  .blog-container.main-content-wrapper.blog-homepage {
+    flex-direction: column;
+    align-items: flex-start;
+    column-gap: 1.25em;
+  }
+  .blog-container.main-content-wrapper.blog-homepage .blog-featured-group {
+    width: 80%;
+  }
+  .blog-container.main-content-wrapper.blog-homepage .blog-sidebar {
+    max-width: unset;
+  }
+  .blog-container.main-content-wrapper.blog-homepage .blog-sidebar .blog-feature:nth-of-type(1) {
+    padding-top: 1.25rem;
+  }
+  .blog-container.main-content-wrapper.blog-homepage .blog-sidebar .blog-feature:last-of-type {
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .blog-container.main-content-wrapper.blog-homepage .homepage-wrapper {
+    display: grid !important;
+    place-content: center;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    width: 100%;
+  }
+}
